@@ -27,8 +27,6 @@ jobs:
         extra_nix_config: |
           experimental-features = nix-command flakes
           access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-    - name: Show nixpkgs version
-      run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
     - name: Check evaluation
       run: |
         nix-env -f . -qa \* --meta --xml \
@@ -40,5 +38,3 @@ jobs:
           -I $PWD
     - name: Build nix packages
       run: nix shell -f '<nixpkgs>' nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs
-    - name: Trigger NUR update
-      run: curl -X POST https://nur-update.nix-community.org/update?repo=takeokunn
