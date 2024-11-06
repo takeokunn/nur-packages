@@ -14,5 +14,6 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
+  ecspresso = pkgs.callPackage ./pkgs/ecspresso { };
   isucrud = pkgs.callPackage ./pkgs/isucrud { };
 }
