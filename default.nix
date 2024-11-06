@@ -15,4 +15,5 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   isucrud = pkgs.callPackage ./pkgs/isucrud { };
+  textlint-rule-preset-jtf-style = pkgs.callPackage ./pkgs/textlint-rule-preset-jtf-style { };
 }
