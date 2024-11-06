@@ -7,12 +7,12 @@
   fixup-yarn-lock
 }:
 stdenv.mkDerivation (finalAttrs: {
-  pname = "textlint-rule-preset-ja-spacing";
-  version = "2.4.3";
+  pname = "textlint-rule-preset-japanese";
+  version = "10.0.3";
 
   src = fetchFromGitHub {
     owner = "textlint-ja";
-    repo = "textlint-rule-preset-ja-spacing";
+    repo = "textlint-rule-preset-japanese";
     rev = "refs/tags/v${finalAttrs.version}";
     hash = "sha256-B1ciJYdf/+W53oHn+cxgjBA43wb7ec9vJwc/RxtfXig=";
   };
