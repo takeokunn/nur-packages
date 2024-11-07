@@ -14,12 +14,12 @@ stdenv.mkDerivation (finalAttrs: {
     owner = "textlint-ja";
     repo = "textlint-rule-preset-japanese";
     rev = "refs/tags/v${finalAttrs.version}";
-    hash = "sha256-B1ciJYdf/+W53oHn+cxgjBA43wb7ec9vJwc/RxtfXig=";
+    hash = "sha256-I/9q5f8lUsHyf0Zya9S0Mb9BXJ2GEgT56rHNG/1isAA=";
   };
 
   offlineCache = fetchYarnDeps {
     yarnLock = "${finalAttrs.src}/yarn.lock";
-    hash = "sha256-2+lnxml3GgnXi8amm7TQxo5eUg9B7Fvs1M5mNMaZyRc=";
+    hash = "sha256-si3U3OyPLU5LaWsckmtkH7bLVC5pLEkTyIY/tq/fBNs=";
   };
 
   nativeBuildInputs = [

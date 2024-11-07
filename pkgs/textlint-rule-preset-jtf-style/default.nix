@@ -7,12 +7,12 @@
   fixup-yarn-lock
 }:
 stdenv.mkDerivation (finalAttrs: {
-  pname = "textlint-rule-preset-ja-spacing";
-  version = "2.4.3";
+  pname = "textlint-rule-preset-jtf-style";
+  version = "2.3.14";
 
   src = fetchFromGitHub {
     owner = "textlint-ja";
-    repo = "textlint-rule-preset-ja-spacing";
+    repo = "textlint-rule-preset-JTF-style";
     rev = "refs/tags/v${finalAttrs.version}";
     hash = "sha256-B1ciJYdf/+W53oHn+cxgjBA43wb7ec9vJwc/RxtfXig=";
   };
@@ -53,7 +53,7 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   meta = {
-    description = "textlint rule preset for Japanese.";
-    homepage = "https://github.com/textlint-ja/textlint-rule-preset-japanese";
+    description = "JTF日本語標準スタイルガイド for textlint.";
+    homepage = "https://github.com/textlint-ja/textlint-rule-preset-JTF-style";
   };
 })
