@@ -1,4 +1,8 @@
-{ buildGoModule, fetchFromGitHub }:
+{
+  pkgs ? import <nixpkgs> {},
+  buildGoModule,
+  fetchFromGitHub
+}:
 buildGoModule rec {
   pname = "tcardgen";
   version = "0.0.1";
@@ -10,6 +14,8 @@ buildGoModule rec {
   };
   vendorHash = "sha256-+lG2MlilOsHTqs31zvwVMu9DoNBY6ZPrqzJkVXHWYak=";
   ldflags = [ "-X=main.Version=${version}" ];
+
+  buildInputs = with pkgs; [ go_1_23 ];
 
   doCheck = false;
 
