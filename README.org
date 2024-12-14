@@ -1,0 +1,38 @@
+#+STARTUP: overview
+#+TITLE: nur-packages
+#+AUTHOR: takeokunn
+
+My personal [[https://github.com/nix-community/NUR][NUR]] repository
+
+[[https://github.com/takeokunn/nur-packages/actions/workflows/build.yml/badge.svg][https://github.com/takeokunn/nur-packages/actions/workflows/build.yml/badge.svg]]
+
+** Packages
+
+#+begin_src shell :results output table :exports results
+  echo Package, Description, Homepage
+  nix eval \
+      --raw .#packages.x86_64-linux \
+      --apply 'ps:
+  builtins.concatStringsSep "\n" (
+    builtins.map (
+      p: let
+           pkg = ps.${p};
+           name = if pkg.meta ? name then pkg.meta.name else "<unknown>";
+           description = if pkg.meta ? description then pkg.meta.description else "<no description>";
+           homepage = if pkg.meta ? homepage then pkg.meta.homepage else "<no homepage>";
+         in
+      "${name}, ${description}, ${homepage}"
+    ) (builtins.attrNames ps)
+  )'
+#+end_src
+
+#+RESULTS:
+:results:
+| Package                               | Description                                                         | Homepage                                                      |
+| isucrud-1.2.2                         | ISUCON用DBへのCRUDへのデータフロー可視化ツール                          | https://github.com/mazrean/isucrud                            |
+| runn-v0.124.0                         | runn is a package/tool for running operations following a scenario. | https://github.com/k1LoW/runn                                 |
+| tcardgen-0.0.1                        | Generate a TwitterCard(OGP) image for your Hugo posts.              | https://github.com/Ladicle/tcardgen                           |
+| textlint-rule-preset-ja-spacing-2.4.3 | textlint rule preset for Japanese.                                  | https://github.com/textlint-ja/textlint-rule-preset-japanese  |
+| textlint-rule-preset-japanese-10.0.3  | textlint rule preset for Japanese.                                  | https://github.com/textlint-ja/textlint-rule-preset-japanese  |
+| textlint-rule-preset-jtf-style-2.3.14 | JTF日本語標準スタイルガイド for textlint.                              | https://github.com/textlint-ja/textlint-rule-preset-JTF-style |
+:end:
