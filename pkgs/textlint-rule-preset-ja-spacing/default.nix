@@ -53,7 +53,7 @@ stdenv.mkDerivation (finalAttrs: {
   '';
 
   meta = {
-    description = "textlint rule preset for Japanese.";
-    homepage = "https://github.com/textlint-ja/textlint-rule-preset-japanese";
+    description = "スペース周りのスタイルを扱うtextlintルールプリセット";
+    homepage = "https://github.com/textlint-ja/textlint-rule-preset-ja-spacing";
   };
 })
