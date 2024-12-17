@@ -29,11 +29,9 @@ My personal [[https://github.com/nix-community/NUR][NUR]] repository
 
 #+RESULTS:
 :results:
-| Package                               | Description                                                         | Homepage                                                       |
-| isucrud-1.2.2                         | ISUCON用DBへのCRUDへのデータフロー可視化ツール                          | https://github.com/mazrean/isucrud                             |
-| runn-v0.124.0                         | runn is a package/tool for running operations following a scenario. | https://github.com/k1LoW/runn                                  |
-| tcardgen-0.0.1                        | Generate a TwitterCard(OGP) image for your Hugo posts.              | https://github.com/Ladicle/tcardgen                            |
-| textlint-rule-preset-ja-spacing-2.4.3 | スペース周りのスタイルを扱うtextlintルールプリセット                      | https://github.com/textlint-ja/textlint-rule-preset-ja-spacing |
-| textlint-rule-preset-japanese-10.0.3  | textlint rule preset for Japanese.                                  | https://github.com/textlint-ja/textlint-rule-preset-japanese   |
-| textlint-rule-preset-jtf-style-2.3.14 | JTF日本語標準スタイルガイド for textlint.                              | https://github.com/textlint-ja/textlint-rule-preset-JTF-style  |
+| Package                              | Description                                                         | Homepage                                                     |
+| isucrud-1.2.2                        | ISUCON用DBへのCRUDへのデータフロー可視化ツール                          | https://github.com/mazrean/isucrud                           |
+| runn-v0.124.0                        | runn is a package/tool for running operations following a scenario. | https://github.com/k1LoW/runn                                |
+| tcardgen-0.0.1                       | Generate a TwitterCard(OGP) image for your Hugo posts.              | https://github.com/Ladicle/tcardgen                          |
+| textlint-rule-preset-japanese-10.0.3 | textlint rule preset for Japanese.                                  | https://github.com/textlint-ja/textlint-rule-preset-japanese |
 :end:

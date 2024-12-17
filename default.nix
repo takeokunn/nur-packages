@@ -17,7 +17,5 @@
   isucrud = pkgs.callPackage ./pkgs/isucrud { };
   tcardgen = pkgs.callPackage ./pkgs/tcardgen { };
   runn = pkgs.callPackage ./pkgs/runn { };
-  textlint-rule-preset-ja-spacing = pkgs.callPackage ./pkgs/textlint-rule-preset-ja-spacing { };
   textlint-rule-preset-japanese = pkgs.callPackage ./pkgs/textlint-rule-preset-japanese { };
-  textlint-rule-preset-jtf-style = pkgs.callPackage ./pkgs/textlint-rule-preset-jtf-style { };
 }
