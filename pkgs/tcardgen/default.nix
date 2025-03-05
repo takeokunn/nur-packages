@@ -1,5 +1,5 @@
-{ buildGo123Module, fetchFromGitHub }:
-buildGo123Module {
+{ buildGoModule, fetchFromGitHub }:
+buildGoModule {
   pname = "tcardgen";
   version = "0.0.1";
   src = fetchFromGitHub {

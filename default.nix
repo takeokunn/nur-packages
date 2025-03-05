@@ -18,4 +18,5 @@
   tcardgen = pkgs.callPackage ./pkgs/tcardgen { };
   runn = pkgs.callPackage ./pkgs/runn { };
   textlint-rule-preset-japanese = pkgs.callPackage ./pkgs/textlint-rule-preset-japanese { };
+  tbls-ask = pkgs.callPackage ./pkgs/tbls-ask { };
 }
