@@ -19,4 +19,5 @@
   runn = pkgs.callPackage ./pkgs/runn { };
   textlint-rule-preset-japanese = pkgs.callPackage ./pkgs/textlint-rule-preset-japanese { };
   tbls-ask = pkgs.callPackage ./pkgs/tbls-ask { };
+  pict = pkgs.callPackage ./pkgs/pict { };
 }
