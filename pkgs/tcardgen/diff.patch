@@ -1,0 +1,13 @@
+diff --git a/cmd/cmd.go b/cmd/cmd.go
+index a770737..ab7bfab 100644
+--- a/cmd/cmd.go
++++ b/cmd/cmd.go
+@@ -189,7 +189,7 @@ func generateTCard(streams IOStreams, contentPath, outPath string, tpl image.Ima
+ 		return err
+ 	}
+ 	if err := c.DrawTextAtPoint(
+-		strings.ToUpper(fm.Category),
++		fm.Category,
+ 		*cnf.Category.Start,
+ 		canvas.FgHexColor(cnf.Category.FgHexColor),
+ 		canvas.FontFaceFromFFA(ffa, cnf.Category.FontStyle, cnf.Category.FontSize),

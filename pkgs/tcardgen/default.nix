@@ -12,6 +12,10 @@ buildGoModule {
 
   doCheck = false;
 
+  patches = [
+    ./diff.patch
+  ];
+
   meta = {
     description = "Generate a TwitterCard(OGP) image for your Hugo posts.";
     homepage = "https://github.com/Ladicle/tcardgen";
