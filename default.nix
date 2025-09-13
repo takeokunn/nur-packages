@@ -20,4 +20,5 @@
   textlint-rule-preset-japanese = pkgs.callPackage ./pkgs/textlint-rule-preset-japanese { };
   tbls-ask = pkgs.callPackage ./pkgs/tbls-ask { };
   pict = pkgs.callPackage ./pkgs/pict { };
+  terraform-mcp-server = pkgs.callPackage ./pkgs/terraform-mcp-server { };
 }
