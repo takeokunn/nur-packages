@@ -47,7 +47,6 @@
   emacs-rainbow-csv = pkgs.callPackage ./pkgs/emacs-rainbow-csv { };
   emacs-php-doc-block = pkgs.callPackage ./pkgs/emacs-php-doc-block { };
   emacs-fish-repl = pkgs.callPackage ./pkgs/emacs-fish-repl { };
-  emacs-eshell-multiple = pkgs.callPackage ./pkgs/emacs-eshell-multiple { };
   emacs-systemd-mode = pkgs.callPackage ./pkgs/emacs-systemd-mode { };
   emacs-web-php-blade-mode = pkgs.callPackage ./pkgs/emacs-web-php-blade-mode { };
   emacs-org-volume = pkgs.callPackage ./pkgs/emacs-org-volume { };
