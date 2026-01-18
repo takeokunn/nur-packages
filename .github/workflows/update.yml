@@ -21,7 +21,7 @@ jobs:
           git_commit_gpgsign: true
           git_config_global: true
 
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/checkout@v6
 
       - name: Setup nix
         uses: ./.github/actions/setup-nix
@@ -38,6 +38,10 @@ jobs:
           else
             echo "has_changes=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Build packages and push to Cachix
+        if: steps.update.outputs.has_changes == 'true'
+        run: nix shell -f '<nixpkgs>' nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs
 
       - name: Commit and push
         if: steps.update.outputs.has_changes == 'true'
