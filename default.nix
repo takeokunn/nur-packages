@@ -21,4 +21,45 @@
   tbls-ask = pkgs.callPackage ./pkgs/tbls-ask { };
   pict = pkgs.callPackage ./pkgs/pict { };
   terraform-mcp-server = pkgs.callPackage ./pkgs/terraform-mcp-server { };
+
+  # Fish plugins
+  fish-artisan-completion = pkgs.callPackage ./pkgs/fish-artisan-completion { };
+  fish-ghq = pkgs.callPackage ./pkgs/fish-ghq { };
+  dracula-fish = pkgs.callPackage ./pkgs/dracula-fish { };
+  fish-nix-completions = pkgs.callPackage ./pkgs/fish-nix-completions { };
+  fish-nix-env = pkgs.callPackage ./pkgs/fish-nix-env { };
+  fish-dart-completions = pkgs.callPackage ./pkgs/fish-dart-completions { };
+  fish-by-binds-yourself = pkgs.callPackage ./pkgs/fish-by-binds-yourself { };
+
+  # Vim/Neovim plugins
+  vimdoc-ja = pkgs.callPackage ./pkgs/vimdoc-ja { };
+  vim-skkeleton = pkgs.callPackage ./pkgs/vim-skkeleton { };
+  vim-skkeleton-azik = pkgs.callPackage ./pkgs/vim-skkeleton-azik { };
+  nvim-aibo = pkgs.callPackage ./pkgs/nvim-aibo { };
+
+  # Themes and syntax
+  dracula-tig = pkgs.callPackage ./pkgs/dracula-tig { };
+  dracula-sublime = pkgs.callPackage ./pkgs/dracula-sublime { };
+  sublime-gleam = pkgs.callPackage ./pkgs/sublime-gleam { };
+  sublime-justfile = pkgs.callPackage ./pkgs/sublime-justfile { };
+
+  # Emacs packages
+  emacs-rainbow-csv = pkgs.callPackage ./pkgs/emacs-rainbow-csv { };
+  emacs-php-doc-block = pkgs.callPackage ./pkgs/emacs-php-doc-block { };
+  emacs-fish-repl = pkgs.callPackage ./pkgs/emacs-fish-repl { };
+  emacs-eshell-multiple = pkgs.callPackage ./pkgs/emacs-eshell-multiple { };
+  emacs-systemd-mode = pkgs.callPackage ./pkgs/emacs-systemd-mode { };
+  emacs-web-php-blade-mode = pkgs.callPackage ./pkgs/emacs-web-php-blade-mode { };
+  emacs-org-volume = pkgs.callPackage ./pkgs/emacs-org-volume { };
+  emacs-ob-phpstan = pkgs.callPackage ./pkgs/emacs-ob-phpstan { };
+  emacs-ob-treesitter = pkgs.callPackage ./pkgs/emacs-ob-treesitter { };
+  emacs-ob-racket = pkgs.callPackage ./pkgs/emacs-ob-racket { };
+  emacs-ox-hatena = pkgs.callPackage ./pkgs/emacs-ox-hatena { };
+  emacs-consult-tramp = pkgs.callPackage ./pkgs/emacs-consult-tramp { };
+  emacs-explain-pause-mode = pkgs.callPackage ./pkgs/emacs-explain-pause-mode { };
+  emacs-mu4e-dashboard = pkgs.callPackage ./pkgs/emacs-mu4e-dashboard { };
+  emacs-sudden-death = pkgs.callPackage ./pkgs/emacs-sudden-death { };
+  emacs-zalgo-mode = pkgs.callPackage ./pkgs/emacs-zalgo-mode { };
+  emacs-ob-fish = pkgs.callPackage ./pkgs/emacs-ob-fish { };
+  emacs-typst-mode = pkgs.callPackage ./pkgs/emacs-typst-mode { };
 }

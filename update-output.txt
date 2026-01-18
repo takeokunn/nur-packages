@@ -1,0 +1,327 @@
+=== NUR Package Update Script ===
+Started at: 2026-01-18 09:54:01 UTC
+
+Updating: isucrud
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: isucrud
+  [SKIP] isucrud - no updates or error
+
+Updating: tcardgen
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: tcardgen
+  [SKIP] tcardgen - no updates or error
+
+Updating: runn
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: runn
+  [SKIP] runn - no updates or error
+
+Updating: textlint-rule-preset-japanese
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: textlint-rule-preset-japanese
+  [SKIP] textlint-rule-preset-japanese - no updates or error
+
+Updating: tbls-ask
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: tbls-ask
+  [SKIP] tbls-ask - no updates or error
+
+Updating: pict
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: pict
+  [SKIP] pict - no updates or error
+
+Updating: terraform-mcp-server
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: terraform-mcp-server
+  [SKIP] terraform-mcp-server - no updates or error
+
+Updating: fish-artisan-completion
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: fish-artisan-completion
+  [SKIP] fish-artisan-completion - no updates or error
+
+Updating: fish-ghq
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: fish-ghq
+  [SKIP] fish-ghq - no updates or error
+
+Updating: dracula-fish
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: dracula-fish
+  [SKIP] dracula-fish - no updates or error
+
+Updating: fish-nix-completions
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: fish-nix-completions
+  [SKIP] fish-nix-completions - no updates or error
+
+Updating: fish-nix-env
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: fish-nix-env
+  [SKIP] fish-nix-env - no updates or error
+
+Updating: fish-dart-completions
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: fish-dart-completions
+  [SKIP] fish-dart-completions - no updates or error
+
+Updating: fish-by-binds-yourself
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: fish-by-binds-yourself
+  [SKIP] fish-by-binds-yourself - no updates or error
+
+Updating: vimdoc-ja
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: vimdoc-ja
+  [SKIP] vimdoc-ja - no updates or error
+
+Updating: vim-skkeleton
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: vim-skkeleton
+  [SKIP] vim-skkeleton - no updates or error
+
+Updating: vim-skkeleton-azik
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: vim-skkeleton-azik
+  [SKIP] vim-skkeleton-azik - no updates or error
+
+Updating: nvim-aibo
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: nvim-aibo
+  [SKIP] nvim-aibo - no updates or error
+
+Updating: dracula-tig
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: dracula-tig
+  [SKIP] dracula-tig - no updates or error
+
+Updating: dracula-sublime
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: dracula-sublime
+  [SKIP] dracula-sublime - no updates or error
+
+Updating: sublime-gleam
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: sublime-gleam
+  [SKIP] sublime-gleam - no updates or error
+
+Updating: sublime-justfile
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: sublime-justfile
+  [SKIP] sublime-justfile - no updates or error
+
+Updating: emacs-rainbow-csv
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-rainbow-csv
+  [SKIP] emacs-rainbow-csv - no updates or error
+
+Updating: emacs-php-doc-block
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-php-doc-block
+  [SKIP] emacs-php-doc-block - no updates or error
+
+Updating: emacs-fish-repl
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-fish-repl
+  [SKIP] emacs-fish-repl - no updates or error
+
+Updating: emacs-eshell-multiple
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-eshell-multiple
+  [SKIP] emacs-eshell-multiple - no updates or error
+
+Updating: emacs-systemd-mode
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-systemd-mode
+  [SKIP] emacs-systemd-mode - no updates or error
+
+Updating: emacs-web-php-blade-mode
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-web-php-blade-mode
+  [SKIP] emacs-web-php-blade-mode - no updates or error
+
+Updating: emacs-org-volume
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-org-volume
+  [SKIP] emacs-org-volume - no updates or error
+
+Updating: emacs-ob-phpstan
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-ob-phpstan
+  [SKIP] emacs-ob-phpstan - no updates or error
+
+Updating: emacs-ob-treesitter
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-ob-treesitter
+  [SKIP] emacs-ob-treesitter - no updates or error
+
+Updating: emacs-ob-racket
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-ob-racket
+  [SKIP] emacs-ob-racket - no updates or error
+
+Updating: emacs-ox-hatena
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-ox-hatena
+  [SKIP] emacs-ox-hatena - no updates or error
+
+Updating: emacs-consult-tramp
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-consult-tramp
+  [SKIP] emacs-consult-tramp - no updates or error
+
+Updating: emacs-explain-pause-mode
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-explain-pause-mode
+  [SKIP] emacs-explain-pause-mode - no updates or error
+
+Updating: emacs-mu4e-dashboard
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-mu4e-dashboard
+  [SKIP] emacs-mu4e-dashboard - no updates or error
+
+Updating: emacs-sudden-death
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-sudden-death
+  [SKIP] emacs-sudden-death - no updates or error
+
+Updating: emacs-zalgo-mode
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-zalgo-mode
+  [SKIP] emacs-zalgo-mode - no updates or error
+
+Updating: emacs-ob-fish
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-ob-fish
+  [SKIP] emacs-ob-fish - no updates or error
+
+Updating: emacs-typst-mode
+usage: nix-update [-h] [-f FILE] [-q] [-F] [--build] [--test] [--review] [--format] [--commit] [-u] [--update-script-args UPDATE_SCRIPT_ARGS] [--url URL] [--print-commit-message]
+                  [--write-commit-message FILE] [-vr VERSION_REGEX] [--run] [--shell] [--version [VERSION]] [--override-filename [OVERRIDE_FILENAME]] [--system SYSTEM]
+                  [--generate-lockfile] [--lockfile-metadata-path LOCKFILE_METADATA_PATH] [-s SUBPACKAGE] [--src-only] [--no-src] [--use-github-releases] [--option name value]
+                  attribute
+nix-update: error: unrecognized arguments: emacs-typst-mode
+  [SKIP] emacs-typst-mode - no updates or error
+
+=== Summary ===
+Updated: 0
+Skipped: 40
+Completed at: 2026-01-18 09:54:08 UTC

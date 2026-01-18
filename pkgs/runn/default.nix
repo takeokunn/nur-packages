@@ -1,7 +1,7 @@
 { buildGoModule, fetchFromGitHub }:
 buildGoModule rec {
   pname = "runn";
-  version = "v0.124.0";
+  version = "1.3.0";
   src = fetchFromGitHub {
     owner = "k1LoW";
     repo = "runn";
