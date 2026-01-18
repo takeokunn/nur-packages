@@ -3,7 +3,7 @@
 , cmake
 }:
 stdenv.mkDerivation (finalAttrs: {
-  version = "main";
+  version = "3.7.4";
   pname = "pict";
 
   src = fetchFromGitHub {

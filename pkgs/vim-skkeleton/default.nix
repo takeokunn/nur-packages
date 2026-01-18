@@ -6,7 +6,7 @@
 
 vimUtils.buildVimPlugin {
   pname = "skkeleton";
-  version = "unstable-2025-01-15";
+  version = "2.0.2";
 
   src = fetchFromGitHub {
     owner = "vim-skk";

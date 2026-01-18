@@ -8,18 +8,18 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "textlint-rule-preset-japanese";
-  version = "10.0.3";
+  version = "10.0.4";
 
   src = fetchFromGitHub {
     owner = "textlint-ja";
     repo = "textlint-rule-preset-japanese";
     rev = "refs/tags/v${finalAttrs.version}";
-    hash = "sha256-I/9q5f8lUsHyf0Zya9S0Mb9BXJ2GEgT56rHNG/1isAA=";
+    hash = "sha256-i7DVkSLGEVk+asTS2obNtW0OtZq8vPXkwC0JeEsGlh8=";
   };
 
   offlineCache = fetchYarnDeps {
     yarnLock = "${finalAttrs.src}/yarn.lock";
-    hash = "sha256-si3U3OyPLU5LaWsckmtkH7bLVC5pLEkTyIY/tq/fBNs=";
+    hash = "sha256-mFZLBtG3Y/etLGf+dhyPbhxlQnoMhV845AKhaRu8iqk=";
   };
 
   nativeBuildInputs = [

@@ -6,7 +6,7 @@
 
 stdenvNoCC.mkDerivation {
   pname = "sublime-justfile";
-  version = "unstable-2024-12-27";
+  version = "4148-1.1.5";
 
   src = fetchFromGitHub {
     owner = "nk9";

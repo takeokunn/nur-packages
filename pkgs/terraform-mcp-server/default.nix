@@ -1,7 +1,7 @@
 { buildGoModule, fetchFromGitHub }:
 buildGoModule {
   pname = "terraform-mcp-server";
-  version = "0.2.3";
+  version = "0.3.3";
   src = fetchFromGitHub {
     owner = "hashicorp";
     repo = "terraform-mcp-server";

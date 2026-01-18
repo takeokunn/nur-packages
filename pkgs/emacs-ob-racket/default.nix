@@ -6,7 +6,7 @@
 
 emacsPackages.trivialBuild {
   pname = "ob-racket";
-  version = "unstable-2022-06-14";
+  version = "1.3.0";
 
   src = fetchFromGitHub {
     owner = "hasu";

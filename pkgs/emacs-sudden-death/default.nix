@@ -6,7 +6,7 @@
 
 emacsPackages.trivialBuild {
   pname = "sudden-death";
-  version = "unstable-2016-03-19";
+  version = "0.2.1";
 
   src = fetchFromGitHub {
     owner = "yewton";

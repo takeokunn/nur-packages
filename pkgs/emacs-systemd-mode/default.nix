@@ -6,7 +6,7 @@
 
 emacsPackages.trivialBuild {
   pname = "systemd-mode";
-  version = "unstable-2023-05-10";
+  version = "1.6";
 
   src = fetchFromGitHub {
     owner = "holomorph";

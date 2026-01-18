@@ -6,7 +6,7 @@
 
 stdenvNoCC.mkDerivation {
   pname = "sublime-gleam";
-  version = "unstable-2023-08-14";
+  version = "1.0.1";
 
   src = fetchFromGitHub {
     owner = "molnarmark";

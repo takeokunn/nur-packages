@@ -6,7 +6,7 @@
 
 stdenvNoCC.mkDerivation {
   pname = "dracula-sublime";
-  version = "unstable-2023-07-10";
+  version = "1.4.3";
 
   src = fetchFromGitHub {
     owner = "dracula";

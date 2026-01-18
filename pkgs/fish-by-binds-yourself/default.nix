@@ -6,7 +6,7 @@
 
 fishPlugins.buildFishPlugin {
   pname = "fish-by-binds-yourself";
-  version = "unstable-2024-06-04";
+  version = "1.0.0";
 
   src = fetchFromGitHub {
     owner = "atusy";
