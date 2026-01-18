@@ -2,6 +2,277 @@
 #+AUTHOR: takeokunn
 * nur-packages
 
-My personal [[https://github.com/nix-community/NUR][NUR]] repository
+My personal [[https://github.com/nix-community/NUR][NUR]] repository.
 
 [[https://github.com/takeokunn/nur-packages/actions/workflows/build.yml/badge.svg][https://github.com/takeokunn/nur-packages/actions/workflows/build.yml/badge.svg]]
+
+** Supported Platforms
+
+| Platform        | Architecture   |
+|-----------------+----------------|
+| Linux           | x86_64         |
+| macOS (Darwin)  | aarch64 (M1+)  |
+
+** Packages
+
+*** CLI Tools
+
+| Package                          | Description                                                                       |
+|----------------------------------+-----------------------------------------------------------------------------------|
+| =isucrud=                        | ISUCON DB CRUD data flow visualization tool                                       |
+| =tcardgen=                       | Generate TwitterCard (OGP) images for Hugo posts                                  |
+| =runn=                           | Package/tool for running operations following a scenario                          |
+| =textlint-rule-preset-japanese=  | textlint rule preset for Japanese                                                 |
+| =tbls-ask=                       | tbls external subcommand for asking LLM about datasources                         |
+| =pict=                           | Pairwise Independent Combinatorial Tool (Microsoft)                               |
+| =terraform-mcp-server=           | Terraform MCP Server for Infrastructure as Code automation                        |
+
+*** Fish Shell Plugins
+
+| Package                   | Description                                   |
+|---------------------------+-----------------------------------------------|
+| =fish-artisan-completion= | Fish shell completions for Laravel Artisan    |
+| =fish-ghq=                | ghq wrapper function for fish shell           |
+| =dracula-fish=            | Dracula theme for fish shell                  |
+| =fish-nix-completions=    | Fish shell completions for Nix                |
+| =fish-nix-env=            | Fish plugin that adds nix-shell support       |
+| =fish-dart-completions=   | Fish shell completions for Dart               |
+| =fish-by-binds-yourself=  | Fish shell plugin for custom key bindings     |
+
+*** Vim/Neovim Plugins
+
+| Package               | Description                                     |
+|-----------------------+-------------------------------------------------|
+| =vimdoc-ja=           | Japanese translation of Vim help                |
+| =vim-skkeleton=       | SKK implementation for Vim/Neovim with denops   |
+| =vim-skkeleton-azik=  | skkeleton AZIK kanatable                        |
+| =nvim-aibo=           | AI Bot for Neovim written in Denops             |
+
+*** Themes and Syntax Highlighting
+
+| Package            | Description                                   |
+|--------------------+-----------------------------------------------|
+| =dracula-tig=      | Dracula theme for tig                         |
+| =dracula-sublime=  | Dracula theme for Sublime Text                |
+| =sublime-gleam=    | Gleam syntax highlighting for Sublime Text    |
+| =sublime-justfile= | Justfile syntax highlighting for Sublime Text |
+
+*** Emacs Packages
+
+| Package                    | Description                                      |
+|----------------------------+--------------------------------------------------|
+| =emacs-rainbow-csv=        | Rainbow CSV mode for Emacs                       |
+| =emacs-php-doc-block=      | PHP DocBlock generator                           |
+| =emacs-fish-repl=          | Fish shell REPL for Emacs                        |
+| =emacs-systemd-mode=       | Major mode for editing systemd units             |
+| =emacs-web-php-blade-mode= | Laravel Blade template mode using web-mode       |
+| =emacs-org-volume=         | Manage volumes of Org files                      |
+| =emacs-ob-phpstan=         | Org-babel functions for PHPStan                  |
+| =emacs-ob-treesitter=      | Org-babel functions for tree-sitter              |
+| =emacs-ob-racket=          | Org-babel functions for Racket                   |
+| =emacs-ox-hatena=          | Hatena markup exporter for Org-mode              |
+| =emacs-consult-tramp=      | Consult interface for TRAMP                      |
+| =emacs-explain-pause-mode= | Top-like interface to debug Emacs performance    |
+| =emacs-mu4e-dashboard=     | A dashboard for mu4e                             |
+| =emacs-sudden-death=       | Sudden death generator (突然の死ジェネレーター)  |
+| =emacs-zalgo-mode=         | Zalgo text generator                             |
+| =emacs-ob-fish=            | Org-babel functions for fish shell               |
+| =emacs-typst-mode=         | Major mode for Typst                             |
+
+** Installation
+
+*** Via NUR (Recommended)
+
+Add NUR to your configuration following [[https://github.com/nix-community/NUR#installation][NUR installation guide]], then use packages like:
+
+#+begin_src nix
+{ pkgs, nur, ... }:
+
+{
+  environment.systemPackages = [
+    nur.repos.takeokunn.runn
+    nur.repos.takeokunn.tcardgen
+  ];
+
+  programs.fish.plugins = [
+    { name = "ghq"; src = nur.repos.takeokunn.fish-ghq.src; }
+  ];
+}
+#+end_src
+
+*** Via Flake
+
+Add this repository as a flake input:
+
+#+begin_src nix
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nur-takeokunn.url = "github:takeokunn/nur-packages";
+  };
+
+  outputs = { self, nixpkgs, nur-takeokunn, ... }:
+    let
+      system = "x86_64-linux"; # or "aarch64-darwin"
+      pkgs = import nixpkgs { inherit system; };
+      nurPkgs = nur-takeokunn.packages.${system};
+    in
+    {
+      # Use packages
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [
+          nurPkgs.runn
+          nurPkgs.tcardgen
+        ];
+      };
+    };
+}
+#+end_src
+
+*** Via Overlay
+
+Use the provided overlay to add packages directly to nixpkgs:
+
+#+begin_src nix
+{ pkgs ? import <nixpkgs> {
+    overlays = [
+      (import (builtins.fetchTarball "https://github.com/takeokunn/nur-packages/archive/main.tar.gz") + "/overlay.nix")
+    ];
+  }
+}:
+
+pkgs.mkShell {
+  packages = [
+    pkgs.runn
+    pkgs.tcardgen
+  ];
+}
+#+end_src
+
+** Usage Examples
+
+*** Emacs Packages with Home Manager
+
+#+begin_src nix
+{ pkgs, nur, ... }:
+
+{
+  programs.emacs = {
+    enable = true;
+    extraPackages = epkgs: [
+      nur.repos.takeokunn.emacs-consult-tramp
+      nur.repos.takeokunn.emacs-fish-repl
+      nur.repos.takeokunn.emacs-ob-fish
+    ];
+  };
+}
+#+end_src
+
+*** Fish Plugins with Home Manager
+
+#+begin_src nix
+{ pkgs, nur, ... }:
+
+{
+  programs.fish = {
+    enable = true;
+    plugins = [
+      { name = "ghq"; src = nur.repos.takeokunn.fish-ghq.src; }
+      { name = "nix-completions"; src = nur.repos.takeokunn.fish-nix-completions.src; }
+      { name = "dracula"; src = nur.repos.takeokunn.dracula-fish.src; }
+    ];
+  };
+}
+#+end_src
+
+*** Vim/Neovim Plugins
+
+#+begin_src nix
+{ pkgs, nur, ... }:
+
+{
+  programs.neovim = {
+    enable = true;
+    plugins = [
+      nur.repos.takeokunn.vimdoc-ja
+      nur.repos.takeokunn.vim-skkeleton
+      nur.repos.takeokunn.nvim-aibo
+    ];
+  };
+}
+#+end_src
+
+** Development
+
+*** Building Packages Locally
+
+#+begin_src bash
+# Build a specific package
+nix-build -A runn
+
+# Build all packages
+nix-build ci.nix -A cacheOutputs
+
+# Enter development shell
+nix develop
+#+end_src
+
+*** Adding a New Package
+
+1. Create a new directory under =pkgs/<package-name>/=
+2. Add =default.nix= with package definition
+3. Register the package in =default.nix= at repository root
+4. Test build with =nix-build -A <package-name>=
+
+*** Package Update Script
+
+Packages are automatically updated daily via GitHub Actions. To manually update:
+
+#+begin_src bash
+# Update all packages
+nix shell nixpkgs#nix-update -c ./scripts/update-packages.sh
+
+# Update flake inputs
+nix flake update
+#+end_src
+
+** CI/CD
+
+*** Build Workflow
+
+Runs on push, pull requests, and daily schedule. Tests packages against multiple nixpkgs versions:
+
+- =nixpkgs-unstable=
+- =nixos-unstable=
+- =nixos-24.11=
+
+*** Auto-Update Workflow
+
+Runs daily to automatically:
+- Update flake inputs
+- Update package versions using =nix-update=
+- Build and push to Cachix
+- Commit changes
+
+** Binary Cache
+
+Packages are cached via [[https://cachix.org][Cachix]]. To use:
+
+#+begin_src nix
+{
+  nix.settings = {
+    substituters = [ "https://takeokunn.cachix.org" ];
+    trusted-public-keys = [ "takeokunn.cachix.org-1:..." ];
+  };
+}
+#+end_src
+
+** License
+
+Each package may have its own license. See individual package definitions for details.
+
+** Links
+
+- [[https://github.com/takeokunn/nur-packages][GitHub Repository]]
+- [[https://nur.nix-community.org/repos/takeokunn/][NUR Repository Page]]
+- [[https://github.com/nix-community/NUR][NUR (Nix User Repository)]]
