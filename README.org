@@ -26,6 +26,7 @@ My personal [[https://github.com/nix-community/NUR][NUR]] repository.
 | =tbls-ask=                       | tbls external subcommand for asking LLM about datasources                         |
 | =pict=                           | Pairwise Independent Combinatorial Tool (Microsoft)                               |
 | =terraform-mcp-server=           | Terraform MCP Server for Infrastructure as Code automation                        |
+| =z_ai-coding-helper=             | GLM Coding Plan Helper for managing multiple coding tools                         |
 
 *** Fish Shell Plugins
 

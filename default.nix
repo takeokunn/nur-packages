@@ -21,6 +21,7 @@
   tbls-ask = pkgs.callPackage ./pkgs/tbls-ask { };
   pict = pkgs.callPackage ./pkgs/pict { };
   terraform-mcp-server = pkgs.callPackage ./pkgs/terraform-mcp-server { };
+  z_ai-coding-helper = pkgs.callPackage ./pkgs/z_ai-coding-helper { };
 
   # Fish plugins
   fish-artisan-completion = pkgs.callPackage ./pkgs/fish-artisan-completion { };
