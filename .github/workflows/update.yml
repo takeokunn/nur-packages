@@ -43,9 +43,11 @@ jobs:
           fi
 
       - name: Build packages and push to Cachix
+        if: steps.update.outputs.has_changes == 'true'
         run: nix shell -f '<nixpkgs>' nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs
 
       - name: Commit and push
+        if: steps.update.outputs.has_changes == 'true'
         run: |
           git add .
           git commit -S -m "chore: automated package updates"
