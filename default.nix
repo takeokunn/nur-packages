@@ -16,11 +16,9 @@
 
   isucrud = pkgs.callPackage ./pkgs/isucrud { };
   tcardgen = pkgs.callPackage ./pkgs/tcardgen { };
-  runn = pkgs.callPackage ./pkgs/runn { };
   textlint-rule-preset-japanese = pkgs.callPackage ./pkgs/textlint-rule-preset-japanese { };
   tbls-ask = pkgs.callPackage ./pkgs/tbls-ask { };
   pict = pkgs.callPackage ./pkgs/pict { };
-  terraform-mcp-server = pkgs.callPackage ./pkgs/terraform-mcp-server { };
   gogcli = pkgs.callPackage ./pkgs/gogcli { };
   z_ai-coding-helper = pkgs.callPackage ./pkgs/z_ai-coding-helper { };
 

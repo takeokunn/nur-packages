@@ -21,11 +21,9 @@ My personal [[https://github.com/nix-community/NUR][NUR]] repository.
 |----------------------------------+-----------------------------------------------------------------------------------|
 | =isucrud=                        | ISUCON DB CRUD data flow visualization tool                                       |
 | =tcardgen=                       | Generate TwitterCard (OGP) images for Hugo posts                                  |
-| =runn=                           | Package/tool for running operations following a scenario                          |
 | =textlint-rule-preset-japanese=  | textlint rule preset for Japanese                                                 |
 | =tbls-ask=                       | tbls external subcommand for asking LLM about datasources                         |
 | =pict=                           | Pairwise Independent Combinatorial Tool (Microsoft)                               |
-| =terraform-mcp-server=           | Terraform MCP Server for Infrastructure as Code automation                        |
 | =gogcli=                         | Fast CLI for Google Workspace (Gmail, Calendar, Drive, Docs, Sheets, etc.)        |
 | =z_ai-coding-helper=             | GLM Coding Plan Helper for managing multiple coding tools                         |
 
@@ -92,8 +90,8 @@ Add NUR to your configuration following [[https://github.com/nix-community/NUR#i
 
 {
   environment.systemPackages = [
-    nur.repos.takeokunn.runn
     nur.repos.takeokunn.tcardgen
+    nur.repos.takeokunn.isucrud
   ];
 
   programs.fish.plugins = [
@@ -123,8 +121,8 @@ Add this repository as a flake input:
       # Use packages
       devShells.${system}.default = pkgs.mkShell {
         packages = [
-          nurPkgs.runn
           nurPkgs.tcardgen
+          nurPkgs.isucrud
         ];
       };
     };
@@ -145,8 +143,8 @@ Use the provided overlay to add packages directly to nixpkgs:
 
 pkgs.mkShell {
   packages = [
-    pkgs.runn
     pkgs.tcardgen
+    pkgs.isucrud
   ];
 }
 #+end_src
@@ -210,7 +208,7 @@ pkgs.mkShell {
 
 #+begin_src bash
 # Build a specific package
-nix-build -A runn
+nix-build -A tcardgen
 
 # Build all packages
 nix-build ci.nix -A cacheOutputs
