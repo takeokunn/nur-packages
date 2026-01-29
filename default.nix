@@ -21,6 +21,7 @@
   tbls-ask = pkgs.callPackage ./pkgs/tbls-ask { };
   pict = pkgs.callPackage ./pkgs/pict { };
   terraform-mcp-server = pkgs.callPackage ./pkgs/terraform-mcp-server { };
+  gogcli = pkgs.callPackage ./pkgs/gogcli { };
   z_ai-coding-helper = pkgs.callPackage ./pkgs/z_ai-coding-helper { };
 
   # Fish plugins
