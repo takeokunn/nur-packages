@@ -19,6 +19,7 @@ My personal [[https://github.com/nix-community/NUR][NUR]] repository.
 
 | Package                          | Description                                                                       |
 |----------------------------------+-----------------------------------------------------------------------------------|
+| =eldev=                          | Elisp Development Tool                                                            |
 | =isucrud=                        | ISUCON DB CRUD data flow visualization tool                                       |
 | =tcardgen=                       | Generate TwitterCard (OGP) images for Hugo posts                                  |
 | =textlint-rule-preset-japanese=  | textlint rule preset for Japanese                                                 |

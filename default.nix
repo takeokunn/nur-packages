@@ -14,6 +14,7 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
+  eldev = pkgs.callPackage ./pkgs/eldev { };
   isucrud = pkgs.callPackage ./pkgs/isucrud { };
   tcardgen = pkgs.callPackage ./pkgs/tcardgen { };
   textlint-rule-preset-japanese = pkgs.callPackage ./pkgs/textlint-rule-preset-japanese { };
