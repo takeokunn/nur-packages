@@ -1,10 +1,11 @@
 {
+  lib,
   stdenv,
   fetchFromGitHub,
   fetchYarnDeps,
   nodejs,
   yarn,
-  fixup-yarn-lock
+  fixup-yarn-lock,
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "textlint-rule-preset-japanese";
@@ -55,5 +56,8 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     description = "textlint rule preset for Japanese.";
     homepage = "https://github.com/textlint-ja/textlint-rule-preset-japanese";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.unix;
   };
 })

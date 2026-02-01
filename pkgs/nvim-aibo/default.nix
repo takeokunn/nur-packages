@@ -19,5 +19,7 @@ vimUtils.buildVimPlugin {
     description = "Aibo (AI Bot) for Neovim written in Denops";
     homepage = "https://github.com/lambdalisue/nvim-aibo";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

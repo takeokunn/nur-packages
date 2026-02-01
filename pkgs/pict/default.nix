@@ -1,6 +1,8 @@
-{ stdenv
-, fetchFromGitHub
-, cmake
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  cmake,
 }:
 stdenv.mkDerivation (finalAttrs: {
   version = "3.7.4";
@@ -18,5 +20,9 @@ stdenv.mkDerivation (finalAttrs: {
   meta = {
     description = "Pairwise Independent Combinatorial Tool";
     homepage = "https://www.pairwise.org/";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.unix;
+    mainProgram = "pict";
   };
 })

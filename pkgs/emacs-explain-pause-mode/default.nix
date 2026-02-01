@@ -19,5 +19,7 @@ emacsPackages.trivialBuild {
     description = "Top-like interface for Emacs to debug performance";
     homepage = "https://github.com/lastquestion/explain-pause-mode";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

@@ -1,4 +1,8 @@
-{ buildGo124Module, fetchFromGitHub }:
+{
+  lib,
+  buildGo124Module,
+  fetchFromGitHub,
+}:
 buildGo124Module {
   pname = "tbls-ask";
   version = "0.6.6";
@@ -13,8 +17,11 @@ buildGo124Module {
   doCheck = false;
 
   meta = {
-    description = "tbls-ask is an external subcommand of tbls for asking LLM of the datasource.";
+    description = "External subcommand of tbls for asking LLM about datasources";
     homepage = "https://github.com/k1LoW/tbls-ask";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.unix;
     mainProgram = "tbls-ask";
   };
 }

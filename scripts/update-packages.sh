@@ -19,7 +19,34 @@ NPM_PACKAGES=(
 # GitHub packages with unstable versions (commit-based)
 # Format: "nix-pkg-name:owner/repo:branch"
 GITHUB_UNSTABLE_PACKAGES=(
+    # Emacs packages
     "emacs-arto:arto-app/arto.el:main"
+    "emacs-consult-tramp:Ladicle/consult-tramp:main"
+    "emacs-explain-pause-mode:lastquestion/explain-pause-mode:master"
+    "emacs-fish-repl:takeokunn/fish-repl.el:main"
+    "emacs-mu4e-dashboard:rougier/mu4e-dashboard:main"
+    "emacs-ob-fish:takeokunn/ob-fish:main"
+    "emacs-ob-phpstan:emacs-php/ob-phpstan:main"
+    "emacs-ob-treesitter:takeokunn/ob-treesitter:main"
+    "emacs-org-volume:akirak/org-volume:master"
+    "emacs-ox-hatena:zonkyy/ox-hatena:master"
+    "emacs-php-doc-block:moskalyovd/emacs-php-doc-block:master"
+    "emacs-rainbow-csv:emacs-vs/rainbow-csv:master"
+    "emacs-typst-mode:Ziqi-Yang/typst-mode.el:main"
+    "emacs-web-php-blade-mode:takeokunn/web-php-blade-mode:main"
+    "emacs-zalgo-mode:nehrbash/zalgo-mode:main"
+    # Fish packages
+    "dracula-fish:dracula/fish:main"
+    "fish-artisan-completion:adriaanzon/fish-artisan-completion:master"
+    "fish-dart-completions:takeokunn/fish-dart-completions:main"
+    "fish-ghq:decors/fish-ghq:master"
+    "fish-nix-completions:kidonng/nix-completions.fish:main"
+    "fish-nix-env:lilyball/nix-env.fish:master"
+    # Theme packages
+    "dracula-tig:dracula/tig:main"
+    # Vim packages
+    "vimdoc-ja:vim-jp/vimdoc-ja:master"
+    "vim-skkeleton-azik:kei-s16/skkeleton-azik-kanatable:main"
 )
 
 # Flake inputs that track GitHub releases

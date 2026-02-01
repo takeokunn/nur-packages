@@ -19,5 +19,7 @@ emacsPackages.trivialBuild {
     description = "Hatena markup exporter for Org-mode";
     homepage = "https://github.com/zonkyy/ox-hatena";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

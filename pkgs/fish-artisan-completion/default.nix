@@ -19,5 +19,7 @@ fishPlugins.buildFishPlugin {
     description = "Fish shell completions for Laravel Artisan";
     homepage = "https://github.com/adriaanzon/fish-artisan-completion";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

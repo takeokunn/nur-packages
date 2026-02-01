@@ -24,5 +24,7 @@ emacsPackages.trivialBuild {
     description = "Emacs major mode for editing systemd units";
     homepage = "https://github.com/holomorph/systemd-mode";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

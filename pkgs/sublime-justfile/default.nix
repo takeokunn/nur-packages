@@ -26,5 +26,7 @@ stdenvNoCC.mkDerivation {
     description = "Justfile syntax highlighting for Sublime Text";
     homepage = "https://github.com/nk9/just_sublime";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

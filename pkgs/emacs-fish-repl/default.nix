@@ -21,5 +21,7 @@ emacsPackages.trivialBuild {
     description = "Fish shell REPL for Emacs";
     homepage = "https://github.com/takeokunn/fish-repl.el";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

@@ -26,5 +26,7 @@ stdenvNoCC.mkDerivation {
     description = "Dracula theme for Sublime Text";
     homepage = "https://github.com/dracula/sublime";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

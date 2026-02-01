@@ -19,5 +19,7 @@ emacsPackages.trivialBuild {
     description = "Org-babel functions for PHPStan";
     homepage = "https://github.com/emacs-php/ob-phpstan";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

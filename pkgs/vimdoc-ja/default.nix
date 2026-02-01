@@ -16,8 +16,10 @@ vimUtils.buildVimPlugin {
   };
 
   meta = {
-    description = "Vimのヘルプの日本語訳";
+    description = "Japanese translation of Vim help files";
     homepage = "https://github.com/vim-jp/vimdoc-ja";
     license = lib.licenses.vim;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

@@ -19,5 +19,7 @@ emacsPackages.trivialBuild {
     description = "An Emacs package to open Markdown files in Arto";
     homepage = "https://github.com/arto-app/arto.el";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

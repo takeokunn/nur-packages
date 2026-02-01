@@ -15,11 +15,17 @@ emacsPackages.trivialBuild {
     hash = "sha256-J1DdP10uc6KeWl+ZhsEBifEJ99lDyKlmcuInHa5p3/M=";
   };
 
-  packageRequires = with emacsPackages; [ dash f request ];
+  packageRequires = with emacsPackages; [
+    dash
+    f
+    request
+  ];
 
   meta = {
     description = "Manage volumes of Org files";
     homepage = "https://github.com/akirak/org-volume";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

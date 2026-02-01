@@ -19,5 +19,7 @@ fishPlugins.buildFishPlugin {
     description = "Fish shell completions for Dart";
     homepage = "https://github.com/takeokunn/fish-dart-completions";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

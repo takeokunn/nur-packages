@@ -92,9 +92,7 @@ let
   '';
 
   codesignWrapper = writeShellScriptBin "codesign" (
-    builtins.replaceStrings
-      [ "@CODESIGN_BIN@" ]
-      [ "${darwin.sigtool}/bin/codesign" ]
+    builtins.replaceStrings [ "@CODESIGN_BIN@" ] [ "${darwin.sigtool}/bin/codesign" ]
       codesignWrapperScript
   );
 
@@ -126,17 +124,16 @@ else
     // {
       inherit cargoArtifacts;
 
-      nativeBuildInputs =
-        [
-          codesignWrapper
-          xattrWrapper
-        ]
-        ++ [
-          dioxus-cli
-        ]
-        ++ [
-          darwin.autoSignDarwinBinariesHook
-        ];
+      nativeBuildInputs = [
+        codesignWrapper
+        xattrWrapper
+      ]
+      ++ [
+        dioxus-cli
+      ]
+      ++ [
+        darwin.autoSignDarwinBinariesHook
+      ];
 
       postPatch = ''
         mkdir -p assets/dist
@@ -165,5 +162,13 @@ else
         mkdir -p $out/Applications
         cp -r "$app_path" $out/Applications/
       '';
+
+      meta = {
+        description = "A local-first Markdown reader for macOS";
+        homepage = "https://github.com/arto-app/Arto";
+        license = lib.licenses.mit;
+        maintainers = with lib.maintainers; [ takeokunn ];
+        platforms = lib.platforms.darwin;
+      };
     }
   )

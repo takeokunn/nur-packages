@@ -26,5 +26,7 @@ stdenvNoCC.mkDerivation {
     description = "Dracula theme for tig";
     homepage = "https://github.com/dracula/tig";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

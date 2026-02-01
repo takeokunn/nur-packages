@@ -19,5 +19,7 @@ fishPlugins.buildFishPlugin {
     description = "Fish shell completions for Nix";
     homepage = "https://github.com/kidonng/nix-completions.fish";
     license = lib.licenses.unlicense;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

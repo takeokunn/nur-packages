@@ -21,5 +21,7 @@ emacsPackages.trivialBuild {
     description = "Rainbow CSV mode for Emacs";
     homepage = "https://github.com/emacs-vs/rainbow-csv";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

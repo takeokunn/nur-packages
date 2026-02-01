@@ -19,5 +19,7 @@ fishPlugins.buildFishPlugin {
     description = "Fish shell plugin for custom key bindings";
     homepage = "https://github.com/atusy/by-binds-yourself";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

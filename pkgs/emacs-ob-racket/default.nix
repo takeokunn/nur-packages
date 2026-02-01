@@ -19,5 +19,7 @@ emacsPackages.trivialBuild {
     description = "Org-babel functions for Racket";
     homepage = "https://github.com/hasu/emacs-ob-racket";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

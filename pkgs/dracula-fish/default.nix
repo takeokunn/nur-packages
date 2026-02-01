@@ -19,5 +19,7 @@ fishPlugins.buildFishPlugin {
     description = "Dracula theme for fish shell";
     homepage = "https://github.com/dracula/fish";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

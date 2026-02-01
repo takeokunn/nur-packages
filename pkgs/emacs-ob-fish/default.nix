@@ -19,5 +19,7 @@ emacsPackages.trivialBuild {
     description = "Org-babel functions for fish shell";
     homepage = "https://github.com/takeokunn/ob-fish";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

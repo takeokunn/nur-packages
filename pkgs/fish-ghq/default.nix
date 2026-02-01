@@ -19,5 +19,7 @@ fishPlugins.buildFishPlugin {
     description = "ghq wrapper function for fish shell";
     homepage = "https://github.com/decors/fish-ghq";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

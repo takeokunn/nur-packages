@@ -19,5 +19,7 @@ emacsPackages.trivialBuild {
     description = "Zalgo text generator for Emacs";
     homepage = "https://github.com/nehrbash/zalgo-mode";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

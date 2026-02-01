@@ -19,5 +19,7 @@ emacsPackages.trivialBuild {
     description = "Laravel Blade template mode for Emacs using web-mode";
     homepage = "https://github.com/takeokunn/web-php-blade-mode";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

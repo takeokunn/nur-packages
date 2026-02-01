@@ -19,5 +19,7 @@ emacsPackages.trivialBuild {
     description = "Org-babel functions for tree-sitter";
     homepage = "https://github.com/takeokunn/ob-treesitter";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

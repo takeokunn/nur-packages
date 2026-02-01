@@ -1,4 +1,8 @@
-{ buildGoModule, fetchFromGitHub }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+}:
 buildGoModule rec {
   pname = "isucrud";
   version = "1.4.0";
@@ -11,8 +15,11 @@ buildGoModule rec {
   vendorHash = "sha256-hVgvjuZwRwYFul4dWZnY1uiU5roWN9qOpV3gJStLT/I=";
   ldflags = [ "-X=main.Version=${version}" ];
   meta = {
-    description = "ISUCON用DBへのCRUDへのデータフロー可視化ツール";
+    description = "Data flow visualization tool for CRUD operations on ISUCON databases";
     homepage = "https://github.com/mazrean/isucrud";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.unix;
     mainProgram = "isucrud";
   };
 }

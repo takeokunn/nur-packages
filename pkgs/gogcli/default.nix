@@ -1,4 +1,8 @@
-{ buildGo125Module, fetchFromGitHub }:
+{
+  lib,
+  buildGo125Module,
+  fetchFromGitHub,
+}:
 buildGo125Module {
   pname = "gogcli";
   version = "0.9.0";
@@ -15,6 +19,9 @@ buildGo125Module {
   meta = {
     description = "Fast, script-friendly CLI for Google Workspace (Gmail, Calendar, Chat, Drive, Docs, Sheets, Tasks, etc.) with JSON output";
     homepage = "https://github.com/steipete/gogcli";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.unix;
     mainProgram = "gog";
   };
 }

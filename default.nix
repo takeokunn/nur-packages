@@ -6,7 +6,10 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ pkgs ? import <nixpkgs> { }, craneLib ? null }:
+{
+  pkgs ? import <nixpkgs> { },
+  craneLib ? null,
+}:
 
 {
   # The `lib`, `modules`, and `overlays` names are special

@@ -21,5 +21,7 @@ emacsPackages.trivialBuild {
     description = "Consult interface for TRAMP";
     homepage = "https://github.com/Ladicle/consult-tramp";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

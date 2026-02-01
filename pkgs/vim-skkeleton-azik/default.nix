@@ -19,5 +19,7 @@ vimUtils.buildVimPlugin {
     description = "skkeleton azik kanatable";
     homepage = "https://github.com/kei-s16/skkeleton-azik-kanatable";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

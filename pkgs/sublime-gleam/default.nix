@@ -26,5 +26,7 @@ stdenvNoCC.mkDerivation {
     description = "Gleam syntax highlighting for Sublime Text";
     homepage = "https://github.com/molnarmark/sublime-gleam";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

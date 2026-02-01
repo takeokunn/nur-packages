@@ -53,7 +53,8 @@ buildNpmPackage {
     description = "GLM Coding Plan Helper for managing multiple coding tools";
     homepage = "https://docs.z.ai/";
     license = lib.licenses.unfree;
-    mainProgram = "chelper";
+    maintainers = with lib.maintainers; [ takeokunn ];
     platforms = lib.platforms.all;
+    mainProgram = "chelper";
   };
 }

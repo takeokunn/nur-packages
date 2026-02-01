@@ -19,5 +19,7 @@ emacsPackages.trivialBuild {
     description = "PHP DocBlock generator for Emacs";
     homepage = "https://github.com/moskalyovd/emacs-php-doc-block";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

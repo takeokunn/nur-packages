@@ -19,5 +19,7 @@ vimUtils.buildVimPlugin {
     description = "SKK implements for Vim/Neovim with denops.vim";
     homepage = "https://github.com/vim-skk/skkeleton";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

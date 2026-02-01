@@ -1,4 +1,8 @@
-{ lib, stdenv, fetchFromGitHub }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+}:
 stdenv.mkDerivation rec {
   pname = "eldev";
   version = "1.11.1";
@@ -20,6 +24,8 @@ stdenv.mkDerivation rec {
     description = "Elisp Development Tool";
     homepage = "https://github.com/emacs-eldev/eldev";
     license = lib.licenses.gpl3Plus;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.unix;
     mainProgram = "eldev";
   };
 }

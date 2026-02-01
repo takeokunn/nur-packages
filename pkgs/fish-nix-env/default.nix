@@ -19,5 +19,7 @@ fishPlugins.buildFishPlugin {
     description = "Fish plugin that adds nix-shell support";
     homepage = "https://github.com/lilyball/nix-env.fish";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

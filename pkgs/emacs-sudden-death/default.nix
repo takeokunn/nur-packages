@@ -19,5 +19,7 @@ emacsPackages.trivialBuild {
     description = "Sudden death generator for Emacs";
     homepage = "https://github.com/yewton/sudden-death.el";
     license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.all;
   };
 }

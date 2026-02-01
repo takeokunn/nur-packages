@@ -1,4 +1,8 @@
-{ buildGoModule, fetchFromGitHub }:
+{
+  lib,
+  buildGoModule,
+  fetchFromGitHub,
+}:
 buildGoModule {
   pname = "tcardgen";
   version = "0.10.0";
@@ -17,8 +21,11 @@ buildGoModule {
   ];
 
   meta = {
-    description = "Generate a TwitterCard(OGP) image for your Hugo posts.";
+    description = "Generate a TwitterCard(OGP) image for your Hugo posts";
     homepage = "https://github.com/Ladicle/tcardgen";
+    license = lib.licenses.mit;
+    maintainers = with lib.maintainers; [ takeokunn ];
+    platforms = lib.platforms.unix;
     mainProgram = "tcardgen";
   };
 }
