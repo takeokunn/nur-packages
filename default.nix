@@ -6,7 +6,7 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ pkgs ? import <nixpkgs> { }, artoFlake ? null, system ? builtins.currentSystem }:
+{ pkgs ? import <nixpkgs> { }, craneLib ? null }:
 
 {
   # The `lib`, `modules`, and `overlays` names are special
@@ -24,7 +24,7 @@
   z_ai-coding-helper = pkgs.callPackage ./pkgs/z_ai-coding-helper { };
 
   # Desktop apps (macOS)
-  arto = import ./pkgs/arto { inherit (pkgs) lib; inherit system artoFlake; };
+  arto = if craneLib != null then pkgs.callPackage ./pkgs/arto { inherit craneLib; } else null;
 
   # Fish plugins
   fish-artisan-completion = pkgs.callPackage ./pkgs/fish-artisan-completion { };
