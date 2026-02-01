@@ -17,11 +17,11 @@ let
   version = "0.15.1";
   pname = "arto";
 
-  src = fetchFromGitHub {
+  srcRepo = fetchFromGitHub {
     owner = "arto-app";
     repo = "Arto";
     rev = "ca1365afff67bc3e5690c162d343e26c2ec90d52";
-    hash = "sha256-6nTMvv+HXKlnHMqEOQc8kLVYgZCWrqoQ7T0+JQAGhRg=";
+    hash = "sha256-jx9L6jc8usWUaSUL2OSmJnPBtuYKoXM4v20J9RzLlTA=";
   };
 
   isDarwin = stdenv.hostPlatform.isDarwin;
@@ -32,7 +32,7 @@ let
   renderer-assets = stdenvNoCC.mkDerivation (finalAttrs: {
     pname = "${pname}-renderer-assets";
     inherit version;
-    src = "${src}/renderer";
+    src = "${srcRepo}/renderer";
 
     nativeBuildInputs = [
       nodejs-slim
@@ -104,14 +104,13 @@ let
 
   commonArgs = {
     inherit pname version;
-    src = lib.fileset.toSource rec {
-      root = "${src}/desktop";
-      fileset = lib.fileset.unions [
-        (craneLib.fileset.commonCargoSources root)
-        (root + /assets)
-        (root + /Dioxus.toml)
-      ];
-    };
+    src = srcRepo;
+    cargoLock = "${srcRepo}/desktop/Cargo.lock";
+    cargoToml = "${srcRepo}/desktop/Cargo.toml";
+    postUnpack = ''
+      cd $sourceRoot/desktop
+      sourceRoot="."
+    '';
     strictDeps = true;
   };
 
@@ -143,8 +142,8 @@ else
         mkdir -p assets/dist
         cp -r ${renderer-assets}/* assets/dist/
 
-        cp -r ${src}/extras ../extras
-        cp ${src}/LICENSE ../LICENSE
+        cp -r ${srcRepo}/extras ../extras
+        cp ${srcRepo}/LICENSE ../LICENSE
       '';
 
       buildPhaseCargoCommand = ''
