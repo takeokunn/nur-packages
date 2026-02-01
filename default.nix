@@ -45,6 +45,7 @@
   sublime-justfile = pkgs.callPackage ./pkgs/sublime-justfile { };
 
   # Emacs packages
+  emacs-arto = pkgs.callPackage ./pkgs/emacs-arto { };
   emacs-rainbow-csv = pkgs.callPackage ./pkgs/emacs-rainbow-csv { };
   emacs-php-doc-block = pkgs.callPackage ./pkgs/emacs-php-doc-block { };
   emacs-fish-repl = pkgs.callPackage ./pkgs/emacs-fish-repl { };
