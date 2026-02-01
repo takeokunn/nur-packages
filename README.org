@@ -15,6 +15,12 @@ My personal [[https://github.com/nix-community/NUR][NUR]] repository.
 
 ** Packages
 
+*** Desktop Applications (macOS)
+
+| Package | Description                                           |
+|---------+-------------------------------------------------------|
+| =arto=  | Native macOS Markdown reader with GitHub-style render |
+
 *** CLI Tools
 
 | Package                          | Description                                                                       |

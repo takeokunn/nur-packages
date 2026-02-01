@@ -1,12 +1,51 @@
 {
   "nodes": {
+    "arto": {
+      "inputs": {
+        "crane": [
+          "crane"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769941941,
+        "narHash": "sha256-jx9L6jc8usWUaSUL2OSmJnPBtuYKoXM4v20J9RzLlTA=",
+        "owner": "arto-app",
+        "repo": "arto",
+        "rev": "ca1365afff67bc3e5690c162d343e26c2ec90d52",
+        "type": "github"
+      },
+      "original": {
+        "owner": "arto-app",
+        "ref": "v0.15.1",
+        "repo": "arto",
+        "type": "github"
+      }
+    },
+    "crane": {
+      "locked": {
+        "lastModified": 1769737823,
+        "narHash": "sha256-DrBaNpZ+sJ4stXm+0nBX7zqZT9t9P22zbk6m5YhQxS4=",
+        "owner": "ipetkov",
+        "repo": "crane",
+        "rev": "b2f45c3830aa96b7456a4c4bc327d04d7a43e1ba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ipetkov",
+        "repo": "crane",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1769874795,
-        "narHash": "sha256-vf/OwyjQxFRSavfQhhH7LQp6Liwp2d3JiIyiGKNI6UA=",
+        "lastModified": 1769960283,
+        "narHash": "sha256-zxw24sqGj/tYr0vDEVRXfOw+CeFtbe8Mx8kYa/LGIIM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d2691affb56d22d4dbc584e4674ed84408cce0c5",
+        "rev": "99667f70a02bdf0e69eb5fe377168a38da2e82cc",
         "type": "github"
       },
       "original": {
@@ -17,6 +56,8 @@
     },
     "root": {
       "inputs": {
+        "arto": "arto",
+        "crane": "crane",
         "nixpkgs": "nixpkgs"
       }
     }

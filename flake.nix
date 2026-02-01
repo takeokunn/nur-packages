@@ -1,9 +1,15 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
+    crane.url = "github:ipetkov/crane";
+    arto = {
+      url = "github:arto-app/arto/v0.15.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.crane.follows = "crane";
+    };
   };
 
-  outputs = { self, nixpkgs }:
+  outputs = { self, nixpkgs, crane, arto }:
     let
       systems = [
         "x86_64-linux"
@@ -15,6 +21,8 @@
       {
         legacyPackages = forAllSystems (system: import ./default.nix {
           pkgs = import nixpkgs { inherit system; };
+          artoFlake = arto;
+          inherit system;
         });
         packages = forAllSystems (system: nixpkgs.lib.filterAttrs (_: v: nixpkgs.lib.isDerivation v) self.legacyPackages.${system});
       };
