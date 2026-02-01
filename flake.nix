@@ -4,7 +4,6 @@
     crane.url = "github:ipetkov/crane";
     arto = {
       url = "github:arto-app/arto/v0.15.1";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs.crane.follows = "crane";
     };
   };

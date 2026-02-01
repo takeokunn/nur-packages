@@ -16,6 +16,18 @@ NPM_PACKAGES=(
     "z_ai-coding-helper:@z_ai/coding-helper"
 )
 
+# GitHub packages with unstable versions (commit-based)
+# Format: "nix-pkg-name:owner/repo:branch"
+GITHUB_UNSTABLE_PACKAGES=(
+    "emacs-arto:arto-app/arto.el:main"
+)
+
+# Flake inputs that track GitHub releases
+# Format: "input-name:owner/repo"
+FLAKE_RELEASE_INPUTS=(
+    "arto:arto-app/arto"
+)
+
 check_prerequisites() {
     if ! command -v nix-update >/dev/null 2>&1; then
         echo "ERROR: nix-update is not installed" >&2
@@ -45,6 +57,111 @@ get_npm_name() {
         fi
     done
     return 1
+}
+
+# Check if package is in github unstable packages list
+is_github_unstable_package() {
+    local pkg="$1"
+    for entry in "${GITHUB_UNSTABLE_PACKAGES[@]}"; do
+        if [[ "${entry%%:*}" == "$pkg" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+# Get owner/repo/branch for a github unstable package
+get_github_unstable_info() {
+    local pkg="$1"
+    for entry in "${GITHUB_UNSTABLE_PACKAGES[@]}"; do
+        if [[ "${entry%%:*}" == "$pkg" ]]; then
+            echo "${entry#*:}"
+            return 0
+        fi
+    done
+    return 1
+}
+
+# Update github unstable package from latest commit
+update_github_unstable_package() {
+    local nix_pkg="$1"
+    local info
+    info=$(get_github_unstable_info "$nix_pkg")
+    local owner_repo="${info%:*}"
+    local owner="${owner_repo%%/*}"
+    local repo="${owner_repo#*/}"
+    local branch="${info##*:}"
+    local pkg_dir="$REPO_ROOT/pkgs/$nix_pkg"
+    local default_nix="$pkg_dir/default.nix"
+
+    echo "Updating GitHub unstable package: $nix_pkg ($owner/$repo@$branch)"
+
+    if [[ ! -f "$default_nix" ]]; then
+        echo "  [ERROR] $default_nix not found"
+        return 1
+    fi
+
+    # Get latest commit from GitHub API
+    local commit_info
+    commit_info=$(curl -sf "https://api.github.com/repos/${owner}/${repo}/commits/${branch}")
+    if [[ -z "$commit_info" ]]; then
+        echo "  [ERROR] Could not fetch latest commit from GitHub"
+        return 1
+    fi
+
+    local latest_sha
+    latest_sha=$(echo "$commit_info" | jq -r '.sha')
+    local commit_date
+    commit_date=$(echo "$commit_info" | jq -r '.commit.committer.date' | perl -pe 's/T.*//')
+    if [[ -z "$latest_sha" || "$latest_sha" == "null" ]]; then
+        echo "  [ERROR] Could not extract commit SHA"
+        return 1
+    fi
+    echo "  Latest commit: $latest_sha ($commit_date)"
+
+    # Extract current rev from default.nix
+    local current_rev
+    current_rev=$(perl -ne 'print $1 if /^\s*rev\s*=\s*"([^"]+)"/' "$default_nix")
+    if [[ -z "$current_rev" ]]; then
+        echo "  [ERROR] Could not extract current rev"
+        return 1
+    fi
+    echo "  Current rev: $current_rev"
+
+    # Compare revs
+    if [[ "$current_rev" == "$latest_sha" ]]; then
+        echo "  [SKIP] Already at latest commit"
+        return 1
+    fi
+
+    echo "  Updating $current_rev -> $latest_sha"
+
+    # Calculate new hash using nix-prefetch-github
+    echo "  Calculating hash..."
+    local prefetch_result
+    if command -v nix-prefetch-github >/dev/null 2>&1; then
+        prefetch_result=$(nix-prefetch-github "$owner" "$repo" --rev "$latest_sha" 2>/dev/null)
+    else
+        prefetch_result=$(nix shell nixpkgs#nix-prefetch-github -c nix-prefetch-github "$owner" "$repo" --rev "$latest_sha" 2>/dev/null)
+    fi
+
+    local new_hash
+    new_hash=$(echo "$prefetch_result" | jq -r '.hash // .sha256')
+    if [[ -z "$new_hash" || "$new_hash" == "null" ]]; then
+        echo "  [ERROR] Failed to calculate hash"
+        return 1
+    fi
+    echo "  New hash: $new_hash"
+
+    # Update default.nix
+    local new_version="unstable-${commit_date}"
+    echo "  Updating default.nix..."
+    perl -pi -e "s|version = \"unstable-[^\"]+\"|version = \"${new_version}\"|" "$default_nix"
+    perl -pi -e "s|rev = \"[^\"]+\"|rev = \"${latest_sha}\"|" "$default_nix"
+    perl -pi -e "s|hash = \"sha256-[^\"]+\"|hash = \"${new_hash}\"|" "$default_nix"
+
+    echo "  [OK] $nix_pkg updated to $new_version ($latest_sha)"
+    return 0
 }
 
 # Update npm package from registry
@@ -160,6 +277,77 @@ update_npm_package() {
     return 0
 }
 
+# Update flake input that tracks GitHub releases
+update_flake_release_input() {
+    local input_name="$1"
+    local owner_repo="$2"
+    local owner="${owner_repo%%/*}"
+    local repo="${owner_repo#*/}"
+    local flake_nix="$REPO_ROOT/flake.nix"
+
+    echo "Updating flake input: $input_name ($owner/$repo)"
+
+    # Get latest release from GitHub API
+    local release_info
+    release_info=$(curl -sf "https://api.github.com/repos/${owner}/${repo}/releases/latest")
+    if [[ -z "$release_info" ]]; then
+        echo "  [ERROR] Could not fetch latest release from GitHub"
+        return 1
+    fi
+
+    local latest_tag
+    latest_tag=$(echo "$release_info" | jq -r '.tag_name')
+    if [[ -z "$latest_tag" || "$latest_tag" == "null" ]]; then
+        echo "  [ERROR] Could not extract release tag"
+        return 1
+    fi
+    echo "  Latest release: $latest_tag"
+
+    # Extract current version from flake.nix
+    local current_tag
+    current_tag=$(perl -ne "print \$1 if /^\s*${input_name}\s*=\s*\{[^}]*url\s*=\s*\"github:${owner}\/${repo}\/([^\"]+)\"/" "$flake_nix")
+    if [[ -z "$current_tag" ]]; then
+        # Try multiline pattern
+        current_tag=$(perl -0777 -ne "print \$1 if /${input_name}\s*=\s*\{[^}]*url\s*=\s*\"github:[^\/]+\/[^\/]+\/([^\"]+)\"/" "$flake_nix")
+    fi
+    if [[ -z "$current_tag" ]]; then
+        echo "  [ERROR] Could not extract current tag from flake.nix"
+        return 1
+    fi
+    echo "  Current tag: $current_tag"
+
+    # Compare versions
+    if [[ "$current_tag" == "$latest_tag" ]]; then
+        echo "  [SKIP] Already at latest release"
+        return 1
+    fi
+
+    echo "  Updating $current_tag -> $latest_tag"
+
+    # Update flake.nix
+    perl -pi -e "s|github:${owner}/${repo}/[^\"]+|github:${owner}/${repo}/${latest_tag}|" "$flake_nix"
+
+    echo "  [OK] flake input $input_name updated to $latest_tag"
+    return 0
+}
+
+# Update all flake release inputs
+update_flake_inputs() {
+    local updated=0
+
+    echo "=== Updating Flake Inputs ==="
+    for entry in "${FLAKE_RELEASE_INPUTS[@]}"; do
+        local input_name="${entry%%:*}"
+        local owner_repo="${entry#*:}"
+        if update_flake_release_input "$input_name" "$owner_repo"; then
+            ((updated++)) || true
+        fi
+        echo ""
+    done
+
+    return $updated
+}
+
 # Extract package names from default.nix (supports hyphenated names)
 extract_packages() {
     grep -E '^\s+[a-zA-Z][a-zA-Z0-9_-]*\s*=\s*pkgs\.callPackage' "$REPO_ROOT/default.nix" \
@@ -186,6 +374,8 @@ update_package_dispatch() {
 
     if is_npm_package "$pkg"; then
         update_npm_package "$pkg"
+    elif is_github_unstable_package "$pkg"; then
+        update_github_unstable_package "$pkg"
     else
         update_package "$pkg"
     fi
@@ -200,7 +390,14 @@ main() {
 
     local updated=0
     local skipped=0
+    local flake_updated=0
 
+    # Update flake inputs first
+    if update_flake_inputs; then
+        flake_updated=$?
+    fi
+
+    echo "=== Updating Packages ==="
     while IFS= read -r pkg; do
         if update_package_dispatch "$pkg"; then
             ((updated++)) || true
@@ -211,9 +408,17 @@ main() {
     done < <(extract_packages)
 
     echo "=== Summary ==="
-    echo "Updated: $updated"
-    echo "Skipped: $skipped"
+    echo "Flake inputs updated: $flake_updated"
+    echo "Packages updated: $updated"
+    echo "Packages skipped: $skipped"
     echo "Completed at: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+
+    # Run nix flake update if any flake inputs were updated
+    if [[ $flake_updated -gt 0 ]]; then
+        echo ""
+        echo "=== Running nix flake update ==="
+        nix flake update
+    fi
 }
 
 main "$@"
