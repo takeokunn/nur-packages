@@ -18,7 +18,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     owner = "takeokunn";
     repo = "metabase-mcp";
     rev = "refs/tags/v${finalAttrs.version}";
-    hash = "sha256-+fuk9Mxu0lJJKsdqXAB7EE/tVNPYnF2gbwtgWgdLrxU=";
+    hash = "sha256-rdhf4S8lfuDFVvxAdQ/0w/jZE8rArOx6C7egwAu0un0=";
   };
 
   pnpmDeps = fetchPnpmDeps {
