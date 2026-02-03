@@ -33,6 +33,7 @@ My personal [[https://github.com/nix-community/NUR][NUR]] repository.
 | =pict=                           | Pairwise Independent Combinatorial Tool (Microsoft)                               |
 | =gogcli=                         | Fast CLI for Google Workspace (Gmail, Calendar, Drive, Docs, Sheets, etc.)        |
 | =z_ai-coding-helper=             | GLM Coding Plan Helper for managing multiple coding tools                         |
+| =metabase-mcp=                   | MCP server for Metabase integration                                               |
 
 *** Fish Shell Plugins
 
