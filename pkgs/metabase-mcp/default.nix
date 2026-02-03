@@ -12,13 +12,13 @@
 
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "metabase-mcp";
-  version = "1.0.1";
+  version = "1.0.2";
 
   src = fetchFromGitHub {
     owner = "takeokunn";
     repo = "metabase-mcp";
     rev = "refs/tags/v${finalAttrs.version}";
-    hash = "sha256-icPBnQmgTSWyDLqN7AJ86D8/e3BdMgfvw/kJNk5xlXA=";
+    hash = "sha256-+fuk9Mxu0lJJKsdqXAB7EE/tVNPYnF2gbwtgWgdLrxU=";
   };
 
   pnpmDeps = fetchPnpmDeps {
