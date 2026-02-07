@@ -8,6 +8,8 @@
   openssl,
   apple-sdk_15,
   libiconv,
+  makeWrapper,
+  tree-sitter,
 }:
 
 rustPlatform.buildRustPackage rec {
@@ -27,6 +29,7 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [
     pkg-config
     cmake
+    makeWrapper
   ];
 
   buildInputs = [
@@ -38,6 +41,11 @@ rustPlatform.buildRustPackage rec {
   ];
 
   doCheck = false;
+
+  postInstall = ''
+    wrapProgram $out/bin/kakehashi \
+      --prefix PATH : ${lib.makeBinPath [ tree-sitter ]}
+  '';
 
   meta = {
     description = "A Tree-sitter based Language Server bridging multiple language servers";
