@@ -26,6 +26,7 @@
   gogcli = pkgs.callPackage ./pkgs/gogcli { };
   z_ai-coding-helper = pkgs.callPackage ./pkgs/z_ai-coding-helper { };
   metabase-mcp = pkgs.callPackage ./pkgs/metabase-mcp { };
+  kakehashi = pkgs.callPackage ./pkgs/kakehashi { };
 
   # Desktop apps (macOS)
   arto = if craneLib != null then pkgs.callPackage ./pkgs/arto { inherit craneLib; } else null;

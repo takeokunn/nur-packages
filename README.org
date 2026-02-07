@@ -34,6 +34,7 @@ My personal [[https://github.com/nix-community/NUR][NUR]] repository.
 | =gogcli=                         | Fast CLI for Google Workspace (Gmail, Calendar, Drive, Docs, Sheets, etc.)        |
 | =z_ai-coding-helper=             | GLM Coding Plan Helper for managing multiple coding tools                         |
 | =metabase-mcp=                   | MCP server for Metabase integration                                               |
+| =kakehashi=                      | Tree-sitter based Language Server bridging multiple language servers               |
 
 *** Fish Shell Plugins
 
