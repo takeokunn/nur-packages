@@ -87,6 +87,7 @@ My personal [[https://github.com/nix-community/NUR][NUR]] repository.
 | =emacs-zalgo-mode=         | Zalgo text generator                             |
 | =emacs-ob-fish=            | Org-babel functions for fish shell               |
 | =emacs-typst-mode=         | Major mode for Typst                             |
+| =emacs-warm-mode=          | Warm Emacs colors for nighttime coding           |
 | =emacs-arto=               | Open Markdown files in Arto (macOS)              |
 
 ** Installation

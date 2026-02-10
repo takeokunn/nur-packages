@@ -71,4 +71,5 @@
   emacs-zalgo-mode = pkgs.callPackage ./pkgs/emacs-zalgo-mode { };
   emacs-ob-fish = pkgs.callPackage ./pkgs/emacs-ob-fish { };
   emacs-typst-mode = pkgs.callPackage ./pkgs/emacs-typst-mode { };
+  emacs-warm-mode = pkgs.callPackage ./pkgs/emacs-warm-mode { };
 }
