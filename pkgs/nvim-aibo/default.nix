@@ -6,7 +6,7 @@
 
 vimUtils.buildVimPlugin {
   pname = "nvim-aibo";
-  version = "0.8.1";
+  version = "0.9.1";
 
   src = fetchFromGitHub {
     owner = "lambdalisue";
