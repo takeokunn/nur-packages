@@ -5,7 +5,7 @@
 }:
 buildGo125Module {
   pname = "gogcli";
-  version = "0.10.0";
+  version = "0.11.0";
   src = fetchFromGitHub {
     owner = "steipete";
     repo = "gogcli";

@@ -6,13 +6,13 @@
 
 vimUtils.buildVimPlugin {
   pname = "vimdoc-ja";
-  version = "unstable-2026-02-14";
+  version = "unstable-2026-02-15";
 
   src = fetchFromGitHub {
     owner = "vim-jp";
     repo = "vimdoc-ja";
-    rev = "0bf8dbf1df131ffe8311ca131b5cfaaf0c184262";
-    hash = "sha256-5jvvrxWhS0VjMb0UlDsc+wuX1NXFokFywvDAUyunFGY=";
+    rev = "2442f1944cf7cff66cf1c2432092debc341c9cdd";
+    hash = "sha256-Ei9Su6JQmX93gJ2fImb9n112qCc2jDDbL/vKBO1gwQ8=";
   };
 
   meta = {
