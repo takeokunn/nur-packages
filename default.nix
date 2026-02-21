@@ -28,6 +28,12 @@
   metabase-mcp = pkgs.callPackage ./pkgs/metabase-mcp { };
   kakehashi = pkgs.callPackage ./pkgs/kakehashi { };
 
+  # Swift toolchain and packages
+  swift-bin = pkgs.callPackage ./pkgs/swift-bin { };
+  swift-argument-parser = pkgs.callPackage ./pkgs/swift-argument-parser { };
+  swift-testing = pkgs.callPackage ./pkgs/swift-testing { };
+  swift-syntax = pkgs.callPackage ./pkgs/swift-syntax { };
+
   # Desktop apps (macOS)
   arto = if craneLib != null then pkgs.callPackage ./pkgs/arto { inherit craneLib; } else null;
 
