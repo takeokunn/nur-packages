@@ -17,6 +17,7 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
+  diff-highlight = pkgs.callPackage ./pkgs/diff-highlight { };
   eldev = pkgs.callPackage ./pkgs/eldev { };
   isucrud = pkgs.callPackage ./pkgs/isucrud { };
   tcardgen = pkgs.callPackage ./pkgs/tcardgen { };
