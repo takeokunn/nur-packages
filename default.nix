@@ -28,6 +28,8 @@
   z_ai-coding-helper = pkgs.callPackage ./pkgs/z_ai-coding-helper { };
   metabase-mcp = pkgs.callPackage ./pkgs/metabase-mcp { };
   kakehashi = pkgs.callPackage ./pkgs/kakehashi { };
+  lmstudio = pkgs.callPackage ./pkgs/lmstudio { };
+  lms = pkgs.callPackage ./pkgs/lms { };
 
   # Swift toolchain and packages
   swift-bin = pkgs.callPackage ./pkgs/swift-bin { };
