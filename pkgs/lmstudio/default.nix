@@ -50,7 +50,7 @@ stdenvNoCC.mkDerivation rec {
 
   dontFixup = true;
 
-  # hdiutil requires access to /dev and system fs to mount disk images
+  # hdiutil requires access to /dev and system libs to mount disk images
   __impureHostDeps = [
     "/bin/sh"
     "/usr/lib/libSystem.B.dylib"
@@ -58,7 +58,6 @@ stdenvNoCC.mkDerivation rec {
     "/dev/zero"
     "/dev/random"
     "/dev/urandom"
-    "/"
   ];
 
   meta = with lib; {
