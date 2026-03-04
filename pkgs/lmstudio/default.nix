@@ -1,4 +1,4 @@
-{ lib, stdenvNoCC, fetchurl, darwin }:
+{ lib, stdenvNoCC, fetchurl }:
 
 stdenvNoCC.mkDerivation rec {
   pname = "lmstudio";
@@ -11,9 +11,7 @@ stdenvNoCC.mkDerivation rec {
 
   sourceRoot = ".";
 
-  nativeBuildInputs = [ darwin.sigtool ];
-
-  # Mount APFS DMG directly via hdiutil (undmg 1.1.0 does not support APFS)
+  # Mount APFS DMG directly via hdiutil (undmg does not support APFS)
   unpackCmd = ''
     echo "Creating temp directory"
     mnt=$(TMPDIR=/tmp mktemp -d -t nix-XXXXXXXXXX)
@@ -41,9 +39,6 @@ stdenvNoCC.mkDerivation rec {
     # passes the startsWith check.
     local indexJs="$out/Applications/LM Studio.app/Contents/Resources/app/.webpack/main/index.js"
     substituteInPlace "$indexJs" --replace-quiet "'/Applications'" "'/'"
-
-    # Re-sign the app bundle after patching (without --deep: sigtool 0.1.3 does not support it)
-    codesign --force --sign - "$out/Applications/LM Studio.app"
 
     runHook postInstall
   '';
