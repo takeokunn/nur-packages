@@ -2,6 +2,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
     crane.url = "github:ipetkov/crane";
+    devenv = {
+      url = "github:cachix/devenv";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -9,6 +13,7 @@
       self,
       nixpkgs,
       crane,
+      devenv,
     }:
     let
       systems = [
@@ -31,8 +36,11 @@
         let
           pkgs = pkgsFor system;
           craneLib = crane.mkLib pkgs;
+          nurPkgs = import ./default.nix { inherit pkgs craneLib; };
         in
-        import ./default.nix { inherit pkgs craneLib; }
+        nurPkgs // {
+          devenv = devenv.packages.${system}.devenv;
+        }
       );
 
       packages = forAllSystems (
