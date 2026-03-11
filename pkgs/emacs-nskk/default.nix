@@ -15,6 +15,12 @@ emacsPackages.trivialBuild {
     hash = "sha256-UO9OzafJgUhF8Lw1YDQyr9MTLZWkav3Lf6zliO8ntJA=";
   };
 
+  # nskk.el has inter-file dependencies (e.g. nskk-azik.el depends on variables
+  # defined in other modules). trivialBuild compiles each file independently,
+  # which fails at byte-compilation. Skip byte-compilation; the package works
+  # correctly at runtime via autoloads.
+  dontBuild = true;
+
   meta = {
     description = "NSKK - SKK Japanese input method for Emacs";
     homepage = "https://github.com/takeokunn/nskk.el";
