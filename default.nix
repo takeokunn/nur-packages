@@ -76,6 +76,7 @@
   emacs-consult-tramp = pkgs.callPackage ./pkgs/emacs-consult-tramp { };
   emacs-explain-pause-mode = pkgs.callPackage ./pkgs/emacs-explain-pause-mode { };
   emacs-mu4e-dashboard = pkgs.callPackage ./pkgs/emacs-mu4e-dashboard { };
+  emacs-nskk = pkgs.callPackage ./pkgs/emacs-nskk { };
   emacs-sudden-death = pkgs.callPackage ./pkgs/emacs-sudden-death { };
   emacs-zalgo-mode = pkgs.callPackage ./pkgs/emacs-zalgo-mode { };
   emacs-ob-fish = pkgs.callPackage ./pkgs/emacs-ob-fish { };
