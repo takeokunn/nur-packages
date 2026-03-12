@@ -7,7 +7,7 @@
 
 buildNpmPackage rec {
   pname = "lms";
-  version = "0.2.22";
+  version = "release-55-4a97771";
 
   src = fetchFromGitHub {
     owner = "lmstudio-ai";
