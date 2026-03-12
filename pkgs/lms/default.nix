@@ -12,13 +12,11 @@ buildNpmPackage rec {
   src = fetchFromGitHub {
     owner = "lmstudio-ai";
     repo = "lmstudio-js";
-    rev = "refs/tags/v${version}";
-    hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # Placeholder: Update after first build
-    fetchSubmodules = true;
+    rev = "refs/tags/${version}";
+    hash = "sha256-2pQpWgXDamee3zO9BvRp1HhNyNju2nysQF/yIXwVp34=";
   };
 
-  # Placeholder hash - update with: nix-prefetch-url --type sha256 <url> or let nix-build fail
-  npmDepsHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+  npmDepsHash = "sha256-dht+Ql/HbislKL2UXZ+nwADwoZJz3jMLhhak3V/O/8Y=";
 
   nodejs = nodejs_22;
 
@@ -44,21 +42,15 @@ buildNpmPackage rec {
     install -Dm755 dist/index.js $out/lib/node_modules/lms/index.js
 
     # Create wrapper script
-    cat > $out/bin/lms << 'EOF'
+    cat > $out/bin/lms << EOF
     #!${stdenv.shell}
-    exec ${nodejs_22}/bin/node $out/lib/node_modules/lms/index.js "$@"
+    exec ${nodejs_22}/bin/node $out/lib/node_modules/lms/index.js "\$@"
     EOF
 
     chmod +x $out/bin/lms
 
     runHook postInstall
   '';
-
-  # Hash update procedure:
-  # 1. Set npmDepsHash to lib.fakeSha256
-  # 2. Run nix-build -E '((import <nixpkgs> {}).callPackage ./default.nix {})' | head -c 10000
-  # 3. Copy the actual hash from error message and update npmDepsHash
-  # 4. Rebuild to verify
 
   meta = with lib; {
     description = "LMS (Language Model Studio) JavaScript SDK CLI tool";
@@ -67,6 +59,5 @@ buildNpmPackage rec {
     maintainers = with maintainers; [ takeokunn ];
     platforms = platforms.darwin ++ platforms.linux;
     mainProgram = "lms";
-    broken = true;
   };
 }

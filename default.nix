@@ -83,5 +83,4 @@
   emacs-typst-mode = pkgs.callPackage ./pkgs/emacs-typst-mode { };
   emacs-warm-mode = pkgs.callPackage ./pkgs/emacs-warm-mode { };
   emacs-dasel = pkgs.callPackage ./pkgs/emacs-dasel { };
-  emacs-ob-gleam = pkgs.callPackage ./pkgs/emacs-ob-gleam { };
 }
