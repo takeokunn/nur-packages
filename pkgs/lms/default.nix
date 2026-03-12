@@ -10,7 +10,7 @@ buildNpmPackage rec {
   version = "0.2.22";
 
   src = fetchFromGitHub {
-    owner = "lms-org";
+    owner = "lmstudio-ai";
     repo = "lmstudio-js";
     rev = "refs/tags/v${version}";
     hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # Placeholder: Update after first build
@@ -62,10 +62,11 @@ buildNpmPackage rec {
 
   meta = with lib; {
     description = "LMS (Language Model Studio) JavaScript SDK CLI tool";
-    homepage = "https://github.com/lms-org/lmstudio-js";
+    homepage = "https://github.com/lmstudio-ai/lmstudio-js";
     license = licenses.mit;
     maintainers = with maintainers; [ takeokunn ];
     platforms = platforms.darwin ++ platforms.linux;
     mainProgram = "lms";
+    broken = true;
   };
 }
