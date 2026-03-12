@@ -51,4 +51,5 @@ jobs:
         run: |
           git add .
           git commit -S -m "chore: automated package updates"
+          git pull --rebase origin main
           git push origin HEAD
