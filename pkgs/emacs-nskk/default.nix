@@ -6,13 +6,13 @@
 
 emacsPackages.trivialBuild {
   pname = "nskk";
-  version = "0.1.6";
+  version = "0.1.7";
 
   src = fetchFromGitHub {
     owner = "takeokunn";
     repo = "nskk.el";
-    rev = "v0.1.6";
-    hash = "sha256-+M8mRUP2IY6yD1NzhErTu+W8LORqhsue1/+7OQ1bqQU=";
+    rev = "v0.1.7";
+    hash = "sha256-m0QbvdhuBO9EtL/yNCEf2eNsfHHU66koOoy7rovVHjo=";
   };
 
   meta = {
