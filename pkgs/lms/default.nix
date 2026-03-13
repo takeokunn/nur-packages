@@ -16,7 +16,7 @@ buildNpmPackage rec {
     hash = "sha256-2pQpWgXDamee3zO9BvRp1HhNyNju2nysQF/yIXwVp34=";
   };
 
-  npmDepsHash = "sha256-dht+Ql/HbislKL2UXZ+nwADwoZJz3jMLhhak3V/O/8Y=";
+  npmDepsHash = "sha256-4OI/IR4AoevVuSxSBBUFR9MCfaWcxIyHt9nLTtZJ3Es=";
 
   nodejs = nodejs_22;
 

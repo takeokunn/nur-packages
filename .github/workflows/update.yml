@@ -22,6 +22,8 @@ jobs:
           git_config_global: true
 
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Setup nix
         uses: ./.github/actions/setup-nix
@@ -44,6 +46,7 @@ jobs:
 
       - name: Build packages and push to Cachix
         if: steps.update.outputs.has_changes == 'true'
+        continue-on-error: true
         run: nix shell -f '<nixpkgs>' nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs
 
       - name: Commit and push
@@ -51,5 +54,16 @@ jobs:
         run: |
           git add .
           git commit -S -m "chore: automated package updates"
-          git pull --rebase origin main
-          git push origin HEAD
+          pushed=false
+          for i in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD; then
+              pushed=true
+              break
+            fi
+            echo "Push attempt $i failed, retrying..."
+            sleep 5
+          done
+          if [ "$pushed" != "true" ]; then
+            echo "::error::Failed to push after 3 attempts"
+            exit 1
+          fi
