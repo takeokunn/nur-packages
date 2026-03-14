@@ -16,6 +16,12 @@ NPM_PACKAGES=(
     "z_ai-coding-helper:@z_ai/coding-helper"
 )
 
+# npm packages distributed as platform-specific prebuilt binaries
+# Format: "nix-pkg-name:npm-package-name:npm-suffix1/nix-system1,npm-suffix2/nix-system2,..."
+NPM_PLATFORM_BINARY_PACKAGES=(
+    "oh-my-opencode:oh-my-opencode:darwin-arm64/aarch64-darwin,linux-x64/x86_64-linux"
+)
+
 # GitHub packages with unstable versions (commit-based)
 # Format: "nix-pkg-name:owner/repo:branch"
 GITHUB_UNSTABLE_PACKAGES=(
@@ -117,6 +123,25 @@ is_npm_package() {
 get_npm_name() {
     local pkg="$1"
     for entry in "${NPM_PACKAGES[@]}"; do
+        if [[ "${entry%%:*}" == "$pkg" ]]; then
+            echo "${entry#*:}"
+            return 0
+        fi
+    done
+    return 1
+}
+
+is_npm_platform_binary_package() {
+    local pkg="$1"
+    for entry in "${NPM_PLATFORM_BINARY_PACKAGES[@]}"; do
+        [[ "${entry%%:*}" == "$pkg" ]] && return 0
+    done
+    return 1
+}
+
+get_npm_platform_binary_info() {
+    local pkg="$1"
+    for entry in "${NPM_PLATFORM_BINARY_PACKAGES[@]}"; do
         if [[ "${entry%%:*}" == "$pkg" ]]; then
             echo "${entry#*:}"
             return 0
@@ -344,6 +369,95 @@ update_npm_package() {
     return 0
 }
 
+# Update an npm package that distributes platform-specific prebuilt binaries
+# Each platform has its own tarball and hash in the Nix derivation.
+update_npm_platform_binary_package() {
+    local nix_pkg="$1"
+    local info
+    info=$(get_npm_platform_binary_info "$nix_pkg")
+    local npm_pkg="${info%%:*}"
+    local platforms_str="${info#*:}"
+    local default_nix="$REPO_ROOT/pkgs/$nix_pkg/default.nix"
+
+    echo "Updating npm platform binary package: $nix_pkg ($npm_pkg)"
+
+    if [[ ! -f "$default_nix" ]]; then
+        echo "  [ERROR] $default_nix not found"
+        return 2
+    fi
+
+    local current_version
+    current_version=$(perl -ne 'print $1 if /^\s*version\s*=\s*"([^"]+)"/' "$default_nix")
+    if [[ -z "$current_version" ]]; then
+        echo "  [ERROR] Could not extract current version"
+        return 2
+    fi
+    echo "  Current version: $current_version"
+
+    local latest_version
+    latest_version=$(curl -sf "https://registry.npmjs.org/${npm_pkg}" | jq -r '.["dist-tags"].latest' 2>/dev/null)
+    if [[ -z "$latest_version" || "$latest_version" == "null" ]]; then
+        echo "  [ERROR] Could not fetch latest version from npm"
+        return 2
+    fi
+    echo "  Latest version: $latest_version"
+
+    if [[ "$current_version" == "$latest_version" ]]; then
+        echo "  [SKIP] Already at latest version"
+        return 1
+    fi
+
+    echo "  Updating $current_version -> $latest_version"
+
+    # Validate version format
+    if [[ ! "$latest_version" =~ ^[0-9]+\.[0-9]+(\.[0-9]+)?([.+-][A-Za-z0-9._+-]*)?$ ]]; then
+        echo "  [ERROR] Invalid npm version format: $latest_version"
+        return 2
+    fi
+
+    # Update each platform's hash using slurp-mode perl to do cross-line matching
+    IFS=',' read -ra platform_pairs <<< "$platforms_str"
+    for pair in "${platform_pairs[@]}"; do
+        local npm_suffix="${pair%%/*}"
+        local nix_system="${pair#*/}"
+        local platform_npm_pkg="${npm_pkg}-${npm_suffix}"
+        local tarball_url="https://registry.npmjs.org/${platform_npm_pkg}/-/${platform_npm_pkg}-${latest_version}.tgz"
+
+        echo "  Platform: $nix_system ($npm_suffix)"
+        echo "    Fetching hash for $tarball_url ..."
+
+        local raw_hash
+        raw_hash=$(nix-prefetch-url "$tarball_url" --type sha256 2>/dev/null)
+        if [[ -z "$raw_hash" ]]; then
+            echo "    [ERROR] Failed to prefetch $tarball_url"
+            return 2
+        fi
+
+        local new_hash
+        new_hash=$(nix hash convert --hash-algo sha256 --to sri "$raw_hash")
+        if [[ ! "$new_hash" =~ ^sha256-[A-Za-z0-9+/]+=*$ ]]; then
+            echo "    [ERROR] Invalid hash format: $new_hash"
+            return 2
+        fi
+        echo "    New hash: $new_hash"
+
+        # Replace the hash that immediately follows the line containing the platform suffix URL.
+        # Uses perl -0777 (slurp mode) for cross-line regex matching.
+        PLATFORM_SUFFIX="$npm_suffix" NEW_HASH="$new_hash" \
+            perl -0777 -pi -e '
+                my $suffix = $ENV{PLATFORM_SUFFIX};
+                my $hash   = $ENV{NEW_HASH};
+                s|(\Q$suffix\E[^\n]*\n\s*hash\s*=\s*")[^"]+"|${1}${hash}"|;
+            ' "$default_nix"
+    done
+
+    # Update the version field
+    perl -pi -e "s/version = \"[^\"]+\"/version = \"${latest_version}\"/" "$default_nix"
+
+    echo "  [OK] $nix_pkg updated to $latest_version"
+    return 0
+}
+
 # Update a versioned package using nix-update
 update_package() {
     local pkg="$1"
@@ -367,6 +481,8 @@ update_package_dispatch() {
         return 1
     elif is_npm_package "$pkg"; then
         update_npm_package "$pkg"
+    elif is_npm_platform_binary_package "$pkg"; then
+        update_npm_platform_binary_package "$pkg"
     elif is_github_unstable_package "$pkg"; then
         update_github_unstable_package "$pkg"
     else

@@ -27,6 +27,7 @@
   gogcli = pkgs.callPackage ./pkgs/gogcli { };
   z_ai-coding-helper = pkgs.callPackage ./pkgs/z_ai-coding-helper { };
   metabase-mcp = pkgs.callPackage ./pkgs/metabase-mcp { };
+  oh-my-opencode = pkgs.callPackage ./pkgs/oh-my-opencode { };
   kakehashi = pkgs.callPackage ./pkgs/kakehashi { };
   lmstudio = pkgs.callPackage ./pkgs/lmstudio { };
   lms = pkgs.callPackage ./pkgs/lms { };
