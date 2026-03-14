@@ -19,7 +19,7 @@ NPM_PACKAGES=(
 # npm packages distributed as platform-specific prebuilt binaries
 # Format: "nix-pkg-name:npm-package-name:npm-suffix1/nix-system1,npm-suffix2/nix-system2,..."
 NPM_PLATFORM_BINARY_PACKAGES=(
-    "oh-my-opencode:oh-my-opencode:darwin-arm64/aarch64-darwin,linux-x64/x86_64-linux"
+    "oh-my-openagent:oh-my-opencode:darwin-arm64/aarch64-darwin,linux-x64/x86_64-linux"
 )
 
 # GitHub packages with unstable versions (commit-based)
