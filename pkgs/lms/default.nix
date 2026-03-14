@@ -59,5 +59,6 @@ buildNpmPackage rec {
     maintainers = with maintainers; [ takeokunn ];
     platforms = platforms.darwin ++ platforms.linux;
     mainProgram = "lms";
+    broken = true; # package-lock.json has 912 packages without resolved URLs, making buildNpmPackage unusable
   };
 }
