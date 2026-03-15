@@ -2,10 +2,11 @@
   lib,
   emacsPackages,
   fetchFromGitHub,
+  emacs-dasel,
 }:
 
 emacsPackages.trivialBuild {
-  pname = "dasel";
+  pname = "consult-dasel";
   version = "0.1.1";
 
   src = fetchFromGitHub {
@@ -16,11 +17,18 @@ emacsPackages.trivialBuild {
   };
 
   preBuild = ''
-    rm -f consult-dasel.el
+    for f in dasel.el dasel-interactive.el dasel-convert.el dasel-format.el dasel-edit.el; do
+      rm -f "$f"
+    done
   '';
 
+  packageRequires = [
+    emacsPackages.consult
+    emacs-dasel
+  ];
+
   meta = {
-    description = "Emacs interface to dasel for querying and modifying structured data";
+    description = "Consult integration for dasel in Emacs";
     homepage = "https://github.com/takeokunn/dasel-el";
     license = lib.licenses.gpl3Plus;
     maintainers = with lib.maintainers; [ takeokunn ];
