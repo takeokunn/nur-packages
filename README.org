@@ -71,6 +71,7 @@ My personal [[https://github.com/nix-community/NUR][NUR]] repository.
 | Package                    | Description                                      |
 |----------------------------+--------------------------------------------------|
 | =emacs-rainbow-csv=        | Rainbow CSV mode for Emacs                       |
+| =emacs-soft-narrow=        | Narrow-to-region with more eye-candy             |
 | =emacs-php-doc-block=      | PHP DocBlock generator                           |
 | =emacs-fish-repl=          | Fish shell REPL for Emacs                        |
 | =emacs-systemd-mode=       | Major mode for editing systemd units             |
