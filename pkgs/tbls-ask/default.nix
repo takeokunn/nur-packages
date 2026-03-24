@@ -1,9 +1,9 @@
 {
   lib,
-  buildGo124Module,
+  buildGo125Module,
   fetchFromGitHub,
 }:
-buildGo124Module {
+buildGo125Module {
   pname = "tbls-ask";
   version = "0.6.7";
   src = fetchFromGitHub {
