@@ -56,6 +56,9 @@
   vim-skkeleton-azik = pkgs.callPackage ./pkgs/vim-skkeleton-azik { };
   nvim-aibo = pkgs.callPackage ./pkgs/nvim-aibo { };
 
+  # Org-mode themes
+  readthezero = pkgs.callPackage ./pkgs/readthezero { };
+
   # Themes and syntax
   dracula-tig = pkgs.callPackage ./pkgs/dracula-tig { };
   dracula-sublime = pkgs.callPackage ./pkgs/dracula-sublime { };
