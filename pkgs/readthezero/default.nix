@@ -13,7 +13,7 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "takeokunn";
     repo = "readthezero";
-    rev = "b33ab26ee2425204db3125c0e82db278debcf44f";
+    rev = "v${finalAttrs.version}";
     hash = "sha256-AqrZe3GN3chgxDzaC+6uFaaM9dWCp/jnLXNknSEZeBo=";
   };
 
