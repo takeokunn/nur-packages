@@ -6,16 +6,16 @@
 }:
 
 let
-  version = "3.17.6";
+  version = "3.17.11";
 
   sources = {
     "aarch64-darwin" = {
       url = "https://registry.npmjs.org/oh-my-opencode-darwin-arm64/-/oh-my-opencode-darwin-arm64-${version}.tgz";
-      hash = "sha256-/em68MXjubRDojAewwuJP0MNAjoK1Ldx9wYVFPRERrU=";
+      hash = "sha256-zuR/KdZMpYWzn+o7XJiPxJYY8rpkL5r8Evcgqh6WpJg=";
     };
     "x86_64-linux" = {
       url = "https://registry.npmjs.org/oh-my-opencode-linux-x64/-/oh-my-opencode-linux-x64-${version}.tgz";
-      hash = "sha256-RS4Eil8aIv0yfE+zqnMw2GKBhtXD+6WG1oqdSwT8Uvk=";
+      hash = "sha256-sMItpTVRXQnyuppnuvG/kF/K765Rt37SSwRrHMKqoLk=";
     };
   };
 
