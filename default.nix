@@ -27,13 +27,13 @@
   gogcli = pkgs.callPackage ./pkgs/gogcli { };
   z_ai-coding-helper = pkgs.callPackage ./pkgs/z_ai-coding-helper { };
   metabase-mcp = pkgs.callPackage ./pkgs/metabase-mcp { };
-  oh-my-openagent = pkgs.callPackage ./pkgs/oh-my-openagent { };
+  oh-my-openagent = if builtins.elem pkgs.stdenv.hostPlatform.system [ "aarch64-darwin" "x86_64-linux" ] then pkgs.callPackage ./pkgs/oh-my-openagent { } else null;
   kakehashi = pkgs.callPackage ./pkgs/kakehashi { };
-  # Swift toolchain and packages
-  swift-bin = pkgs.callPackage ./pkgs/swift-bin { };
-  swift-argument-parser = pkgs.callPackage ./pkgs/swift-argument-parser { };
-  swift-testing = pkgs.callPackage ./pkgs/swift-testing { };
-  swift-syntax = pkgs.callPackage ./pkgs/swift-syntax { };
+  # Swift toolchain and packages (Darwin only)
+  swift-bin = if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-bin { } else null;
+  swift-argument-parser = if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-argument-parser { } else null;
+  swift-testing = if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-testing { } else null;
+  swift-syntax = if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-syntax { } else null;
 
   # Desktop apps (macOS)
   arto = if craneLib != null then pkgs.callPackage ./pkgs/arto { inherit craneLib; } else null;
