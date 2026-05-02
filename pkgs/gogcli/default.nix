@@ -1,9 +1,9 @@
 {
   lib,
-  buildGo125Module,
+  buildGo126Module,
   fetchFromGitHub,
 }:
-buildGo125Module rec {
+buildGo126Module rec {
   pname = "gogcli";
   version = "0.14.0";
   src = fetchFromGitHub {
@@ -12,7 +12,7 @@ buildGo125Module rec {
     rev = "refs/tags/v${version}";
     hash = "sha256-aau1w6b4nBdTMUTeX0LwV+8YPP5YeghE0iWSaHQXBFQ=";
   };
-  vendorHash = "sha256-nig3GI7eM1XRtIoAh1qH+9PxPPGynl01dCZ2ppyhmzU=";
+  vendorHash = "sha256-UTkuqDXo6TnmZBuk18yhqBTT0+u/CebR4/uZw8XOX2k=";
 
   doCheck = false;
 
