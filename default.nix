@@ -29,8 +29,6 @@
   metabase-mcp = pkgs.callPackage ./pkgs/metabase-mcp { };
   oh-my-openagent = pkgs.callPackage ./pkgs/oh-my-openagent { };
   kakehashi = pkgs.callPackage ./pkgs/kakehashi { };
-  lms = pkgs.callPackage ./pkgs/lms { };
-
   # Swift toolchain and packages
   swift-bin = pkgs.callPackage ./pkgs/swift-bin { };
   swift-argument-parser = pkgs.callPackage ./pkgs/swift-argument-parser { };
