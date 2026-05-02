@@ -29,6 +29,7 @@
   metabase-mcp = pkgs.callPackage ./pkgs/metabase-mcp { };
   oh-my-openagent = if builtins.elem pkgs.stdenv.hostPlatform.system [ "aarch64-darwin" "x86_64-linux" ] then pkgs.callPackage ./pkgs/oh-my-openagent { } else null;
   kakehashi = pkgs.callPackage ./pkgs/kakehashi { };
+  tmux-dart = pkgs.callPackage ./pkgs/tmux-dart { };
   # Swift toolchain and packages (Darwin only)
   swift-bin = if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-bin { } else null;
   swift-argument-parser = if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-argument-parser { } else null;
