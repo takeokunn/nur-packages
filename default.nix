@@ -60,6 +60,7 @@
   readthezero = pkgs.callPackage ./pkgs/readthezero { };
 
   # Themes and syntax
+  dracula-wallpaper = pkgs.callPackage ./pkgs/dracula-wallpaper { };
   dracula-tig = pkgs.callPackage ./pkgs/dracula-tig { };
   dracula-sublime = pkgs.callPackage ./pkgs/dracula-sublime { };
   sublime-gleam = pkgs.callPackage ./pkgs/sublime-gleam { };
