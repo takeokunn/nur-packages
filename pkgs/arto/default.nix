@@ -27,7 +27,7 @@ let
   isDarwin = stdenv.hostPlatform.isDarwin;
 
   appBundleName = "Arto.app";
-  dxBundlePath = "target/dx/${pname}/bundle/macos/bundle/macos";
+  dxBundlePath = "target/dx/${pname}/bundle/macos/macos";
 
   renderer-assets = stdenvNoCC.mkDerivation (finalAttrs: {
     pname = "${pname}-renderer-assets";
