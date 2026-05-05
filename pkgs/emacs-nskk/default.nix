@@ -15,6 +15,8 @@ emacsPackages.trivialBuild {
     hash = "sha256-zjZpLxq3XiZxhTXVsII0cVnx1WTH5FRj0uOJs8WW+ww=";
   };
 
+  sourceRoot = "source/src";
+
   meta = {
     description = "NSKK - SKK Japanese input method for Emacs";
     homepage = "https://github.com/takeokunn/nskk.el";
