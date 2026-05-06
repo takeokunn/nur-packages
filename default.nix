@@ -27,6 +27,7 @@
   gogcli = pkgs.callPackage ./pkgs/gogcli { };
   z_ai-coding-helper = pkgs.callPackage ./pkgs/z_ai-coding-helper { };
   metabase-mcp = pkgs.callPackage ./pkgs/metabase-mcp { };
+  ast-grep-mcp = pkgs.callPackage ./pkgs/ast-grep-mcp { };
   oh-my-openagent = if builtins.elem pkgs.stdenv.hostPlatform.system [ "aarch64-darwin" "x86_64-linux" ] then pkgs.callPackage ./pkgs/oh-my-openagent { } else null;
   kakehashi = pkgs.callPackage ./pkgs/kakehashi { };
   tmux-dart = pkgs.callPackage ./pkgs/tmux-dart { };
