@@ -5,14 +5,14 @@
 }:
 buildGoModule rec {
   pname = "isucrud";
-  version = "1.4.0";
+  version = "1.5.0";
   src = fetchFromGitHub {
     owner = "mazrean";
     repo = "isucrud";
     rev = "refs/tags/v${version}";
-    hash = "sha256-FBNJ8JDMUTLeSbd9gtZkQevn5dnbOf5RX6BzK5j32N8=";
+    hash = "sha256-wO2KZY6yc+CvghL5gyUgzMbfEjrXtFQ8Nn80AE8ueew=";
   };
-  vendorHash = "sha256-hVgvjuZwRwYFul4dWZnY1uiU5roWN9qOpV3gJStLT/I=";
+  vendorHash = "sha256-o54/el1ofJd60uN5BRCz1f4Ha7n+/emdr27YOfx7Nj8=";
   ldflags = [ "-X=main.Version=${version}" ];
   meta = {
     description = "Data flow visualization tool for CRUD operations on ISUCON databases";
