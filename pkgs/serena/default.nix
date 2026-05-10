@@ -138,7 +138,7 @@ python3Packages.buildPythonApplication (finalAttrs: {
     description = "Powerful coding agent toolkit providing semantic retrieval and editing capabilities";
     homepage = "https://github.com/oraios/serena";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [ takeokunn ];
+    maintainers = [ ];
     mainProgram = "serena";
     platforms = lib.platforms.unix;
   };
