@@ -25,6 +25,7 @@ in
 
 tmuxPlugins.mkTmuxPlugin {
   pluginName = "tmux-dart";
+  rtpFilePath = "tmux-dart.tmux";
   inherit version src;
   nativeBuildInputs = [ makeWrapper ];
 
