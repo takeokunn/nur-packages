@@ -71,6 +71,7 @@ SKIP_PACKAGES=(
     "lms"      # buildNpmPackage from GitHub with non-standard tags; update manually
     "lmstudio" # binary-only; no parseable release source
     "arto"     # multi-hash package (source + cargoArtifacts + pnpmDeps); update manually
+    "devenv"   # multi-hash package (src + cargoHash + devenvNixSrc); nix-update can't handle devenvNixRev bump
     "swift-argument-parser" # source-only fetchFromGitHub; no pname for nix-update
     "swift-testing"         # source-only fetchFromGitHub; no pname for nix-update
     "swift-syntax"          # source-only fetchFromGitHub; no pname for nix-update
