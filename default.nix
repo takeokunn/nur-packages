@@ -17,6 +17,7 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
+  devenv = pkgs.callPackage ./pkgs/devenv { };
   diff-highlight = pkgs.callPackage ./pkgs/diff-highlight { };
   eldev = pkgs.callPackage ./pkgs/eldev { };
   isucrud = pkgs.callPackage ./pkgs/isucrud { };
@@ -29,12 +30,22 @@
   metabase-mcp = pkgs.callPackage ./pkgs/metabase-mcp { };
   ast-grep-mcp = pkgs.callPackage ./pkgs/ast-grep-mcp { };
   serena = pkgs.callPackage ./pkgs/serena { };
-  oh-my-openagent = if builtins.elem pkgs.stdenv.hostPlatform.system [ "aarch64-darwin" "x86_64-linux" ] then pkgs.callPackage ./pkgs/oh-my-openagent { } else null;
+  oh-my-openagent =
+    if
+      builtins.elem pkgs.stdenv.hostPlatform.system [
+        "aarch64-darwin"
+        "x86_64-linux"
+      ]
+    then
+      pkgs.callPackage ./pkgs/oh-my-openagent { }
+    else
+      null;
   kakehashi = pkgs.callPackage ./pkgs/kakehashi { };
   tmux-dart = pkgs.callPackage ./pkgs/tmux-dart { };
   # Swift toolchain and packages (Darwin only)
   swift-bin = if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-bin { } else null;
-  swift-argument-parser = if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-argument-parser { } else null;
+  swift-argument-parser =
+    if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-argument-parser { } else null;
   swift-testing = if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-testing { } else null;
   swift-syntax = if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-syntax { } else null;
 
