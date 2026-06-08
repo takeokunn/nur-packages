@@ -23,6 +23,14 @@
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          overlays = [
+            (_: prev: if prev.stdenv.isDarwin then {
+              emacs = prev.emacs.overrideAttrs (old: {
+                buildInputs = (old.buildInputs or [ ]) ++ [ prev.apple-sdk ];
+                NIX_CFLAGS_COMPILE = "-std=gnu11 -include stdbool.h";
+              });
+            } else { })
+          ];
         };
     in
     {
