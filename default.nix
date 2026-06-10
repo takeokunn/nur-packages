@@ -8,6 +8,7 @@
 
 {
   pkgs ? import <nixpkgs> { },
+  emacsPackages ? pkgs.emacsPackages,
   craneLib ? null,
 }:
 
@@ -78,31 +79,31 @@
   sublime-justfile = pkgs.callPackage ./pkgs/sublime-justfile { };
 
   # Emacs packages
-  emacs-arto = pkgs.callPackage ./pkgs/emacs-arto { };
-  emacs-rainbow-csv = pkgs.callPackage ./pkgs/emacs-rainbow-csv { };
-  emacs-soft-narrow = pkgs.callPackage ./pkgs/emacs-soft-narrow { };
-  emacs-php-doc-block = pkgs.callPackage ./pkgs/emacs-php-doc-block { };
-  emacs-fish-repl = pkgs.callPackage ./pkgs/emacs-fish-repl { };
-  emacs-systemd-mode = pkgs.callPackage ./pkgs/emacs-systemd-mode { };
-  emacs-web-php-blade-mode = pkgs.callPackage ./pkgs/emacs-web-php-blade-mode { };
-  emacs-org-volume = pkgs.callPackage ./pkgs/emacs-org-volume { };
-  emacs-ob-phpstan = pkgs.callPackage ./pkgs/emacs-ob-phpstan { };
-  emacs-ob-treesitter = pkgs.callPackage ./pkgs/emacs-ob-treesitter { };
-  emacs-ob-racket = pkgs.callPackage ./pkgs/emacs-ob-racket { };
-  emacs-ox-hatena = pkgs.callPackage ./pkgs/emacs-ox-hatena { };
-  emacs-consult-tramp = pkgs.callPackage ./pkgs/emacs-consult-tramp { };
-  emacs-explain-pause-mode = pkgs.callPackage ./pkgs/emacs-explain-pause-mode { };
-  emacs-mu4e-dashboard = pkgs.callPackage ./pkgs/emacs-mu4e-dashboard { };
-  emacs-nskk = pkgs.callPackage ./pkgs/emacs-nskk { };
-  emacs-sudden-death = pkgs.callPackage ./pkgs/emacs-sudden-death { };
-  emacs-zalgo-mode = pkgs.callPackage ./pkgs/emacs-zalgo-mode { };
-  emacs-ob-fish = pkgs.callPackage ./pkgs/emacs-ob-fish { };
-  emacs-typst-mode = pkgs.callPackage ./pkgs/emacs-typst-mode { };
-  emacs-warm-mode = pkgs.callPackage ./pkgs/emacs-warm-mode { };
-  emacs-dasel = pkgs.callPackage ./pkgs/emacs-dasel { };
+  emacs-arto = pkgs.callPackage ./pkgs/emacs-arto { inherit emacsPackages; };
+  emacs-rainbow-csv = pkgs.callPackage ./pkgs/emacs-rainbow-csv { inherit emacsPackages; };
+  emacs-soft-narrow = pkgs.callPackage ./pkgs/emacs-soft-narrow { inherit emacsPackages; };
+  emacs-php-doc-block = pkgs.callPackage ./pkgs/emacs-php-doc-block { inherit emacsPackages; };
+  emacs-fish-repl = pkgs.callPackage ./pkgs/emacs-fish-repl { inherit emacsPackages; };
+  emacs-systemd-mode = pkgs.callPackage ./pkgs/emacs-systemd-mode { inherit emacsPackages; };
+  emacs-web-php-blade-mode = pkgs.callPackage ./pkgs/emacs-web-php-blade-mode { inherit emacsPackages; };
+  emacs-org-volume = pkgs.callPackage ./pkgs/emacs-org-volume { inherit emacsPackages; };
+  emacs-ob-phpstan = pkgs.callPackage ./pkgs/emacs-ob-phpstan { inherit emacsPackages; };
+  emacs-ob-treesitter = pkgs.callPackage ./pkgs/emacs-ob-treesitter { inherit emacsPackages; };
+  emacs-ob-racket = pkgs.callPackage ./pkgs/emacs-ob-racket { inherit emacsPackages; };
+  emacs-ox-hatena = pkgs.callPackage ./pkgs/emacs-ox-hatena { inherit emacsPackages; };
+  emacs-consult-tramp = pkgs.callPackage ./pkgs/emacs-consult-tramp { inherit emacsPackages; };
+  emacs-explain-pause-mode = pkgs.callPackage ./pkgs/emacs-explain-pause-mode { inherit emacsPackages; };
+  emacs-mu4e-dashboard = pkgs.callPackage ./pkgs/emacs-mu4e-dashboard { inherit emacsPackages; };
+  emacs-nskk = pkgs.callPackage ./pkgs/emacs-nskk { inherit emacsPackages; };
+  emacs-sudden-death = pkgs.callPackage ./pkgs/emacs-sudden-death { inherit emacsPackages; };
+  emacs-zalgo-mode = pkgs.callPackage ./pkgs/emacs-zalgo-mode { inherit emacsPackages; };
+  emacs-ob-fish = pkgs.callPackage ./pkgs/emacs-ob-fish { inherit emacsPackages; };
+  emacs-typst-mode = pkgs.callPackage ./pkgs/emacs-typst-mode { inherit emacsPackages; };
+  emacs-warm-mode = pkgs.callPackage ./pkgs/emacs-warm-mode { inherit emacsPackages; };
+  emacs-dasel = pkgs.callPackage ./pkgs/emacs-dasel { inherit emacsPackages; };
   emacs-consult-dasel =
     let
-      emacs-dasel = pkgs.callPackage ./pkgs/emacs-dasel { };
+      emacs-dasel = pkgs.callPackage ./pkgs/emacs-dasel { inherit emacsPackages; };
     in
-    pkgs.callPackage ./pkgs/emacs-consult-dasel { inherit emacs-dasel; };
+    pkgs.callPackage ./pkgs/emacs-consult-dasel { inherit emacs-dasel emacsPackages; };
 }
