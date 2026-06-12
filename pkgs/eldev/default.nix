@@ -5,12 +5,12 @@
 }:
 stdenv.mkDerivation rec {
   pname = "eldev";
-  version = "1.11.1";
+  version = "1.11.2";
   src = fetchFromGitHub {
     owner = "emacs-eldev";
     repo = "eldev";
     rev = version;
-    hash = "sha256-C95D/d8z4ClfEtlp8Hi4uX67FfPsyWKa0A4wur7vyGk=";
+    hash = "sha256-X23/tnSbdqW1Xcuz4Hnrv5o1VNAm37H+1sOH+vZVGM4=";
   };
   dontBuild = true;
   installPhase = ''
