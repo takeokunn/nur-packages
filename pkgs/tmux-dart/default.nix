@@ -7,13 +7,13 @@
 }:
 
 let
-  version = "0.1.2";
+  version = "0.1.3";
 
   src = fetchFromGitHub {
     owner = "takeokunn";
     repo = "tmux-dart";
     rev = "refs/tags/v${version}";
-    hash = "sha256-4kDmHklqHgv3vz1r6a6RaCDc0nBjgPEEmVuIpxm6AIA=";
+    hash = "sha256-Zu41CYmqMoNTWHuoX/cH5nePygUxE+el4wEHFOV+LoI=";
   };
 
   binary = rustPlatform.buildRustPackage {
