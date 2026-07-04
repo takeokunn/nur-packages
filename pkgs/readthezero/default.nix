@@ -8,13 +8,13 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "readthezero";
-  version = "0.1.0";
+  version = "0.2.0";
 
   src = fetchFromGitHub {
     owner = "takeokunn";
     repo = "readthezero";
     rev = "v${finalAttrs.version}";
-    hash = "sha256-AqrZe3GN3chgxDzaC+6uFaaM9dWCp/jnLXNknSEZeBo=";
+    hash = "sha256-6eO11wsUNG+urc2WXgJ3hA5pRqVEKPG5KHkrAhaOz+4=";
   };
 
   sourceRoot = "source/src";
