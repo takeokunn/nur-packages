@@ -72,6 +72,7 @@ SKIP_PACKAGES=(
     "lmstudio" # binary-only; no parseable release source
     "arto"     # multi-hash package (source + cargoArtifacts + pnpmDeps); update manually
     "devenv"   # multi-hash package (src + cargoHash + devenvNixSrc); nix-update can't handle devenvNixRev bump
+    "tmux-dart" # multi-hash package (src + cargoHash on a nested let-bound binary); nix-update bumps src hash but not the nested cargoHash, breaking the build (already happened for v0.1.2 and v0.1.4)
     "swift-argument-parser" # source-only fetchFromGitHub; no pname for nix-update
     "swift-testing"         # source-only fetchFromGitHub; no pname for nix-update
     "swift-syntax"          # source-only fetchFromGitHub; no pname for nix-update

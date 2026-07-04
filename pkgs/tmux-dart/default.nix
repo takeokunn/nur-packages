@@ -19,7 +19,7 @@ let
   binary = rustPlatform.buildRustPackage {
     pname = "tmux-dart";
     inherit version src;
-    cargoHash = "sha256-h7wfZRi2GAoZEejRHhyuf+SXMGKabPkqBG78avxEhXE=";
+    cargoHash = "sha256-DIxND1ecDZpSaJg6Ts/y8p3abiHr+dFH4xk0wMZkAeY=";
   };
 in
 
