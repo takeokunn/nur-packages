@@ -27,6 +27,7 @@
   tbls-ask = pkgs.callPackage ./pkgs/tbls-ask { };
   pict = pkgs.callPackage ./pkgs/pict { };
   gogcli = pkgs.callPackage ./pkgs/gogcli { };
+  git-bulk-clean = pkgs.callPackage ./pkgs/git-bulk-clean { };
   z_ai-coding-helper = pkgs.callPackage ./pkgs/z_ai-coding-helper { };
   metabase-mcp = pkgs.callPackage ./pkgs/metabase-mcp { };
   ast-grep-mcp = pkgs.callPackage ./pkgs/ast-grep-mcp { };
@@ -42,6 +43,7 @@
     else
       null;
   kakehashi = pkgs.callPackage ./pkgs/kakehashi { };
+  kuro = pkgs.callPackage ./pkgs/kuro { };
   tmux-dart = pkgs.callPackage ./pkgs/tmux-dart { };
   # Swift toolchain and packages (Darwin only)
   swift-bin = if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-bin { } else null;
