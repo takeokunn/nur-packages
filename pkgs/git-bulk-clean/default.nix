@@ -12,16 +12,16 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "git-bulk-clean";
-  version = "0.3.0";
+  version = "0.4.0";
 
   src = fetchFromGitHub {
     owner = "takeokunn";
     repo = "git-bulk-clean";
     tag = "v${version}";
-    hash = "sha256-fONQE4zeV2dJg8s95lqWsZgTdY2/3qbyhBmHbYIFdhc=";
+    hash = "sha256-D/k77Vw8SX7pBdp72cPu1N3BxvvpErSpEmG00fctYMQ=";
   };
 
-  cargoHash = "sha256-MlIDwqnB80sdyG1x0DFzKz1+2VzRA5sYPyiDhgZkRA8=";
+  cargoHash = "sha256-6lnVkgecGfQIxj7S46Oh1Tz/FWDd/h6HZ5wIl3VlPyY=";
 
   nativeBuildInputs = [
     makeWrapper
