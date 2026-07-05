@@ -87,16 +87,21 @@
   emacs-php-doc-block = pkgs.callPackage ./pkgs/emacs-php-doc-block { inherit emacsPackages; };
   emacs-fish-repl = pkgs.callPackage ./pkgs/emacs-fish-repl { inherit emacsPackages; };
   emacs-systemd-mode = pkgs.callPackage ./pkgs/emacs-systemd-mode { inherit emacsPackages; };
-  emacs-web-php-blade-mode = pkgs.callPackage ./pkgs/emacs-web-php-blade-mode { inherit emacsPackages; };
+  emacs-web-php-blade-mode = pkgs.callPackage ./pkgs/emacs-web-php-blade-mode {
+    inherit emacsPackages;
+  };
   emacs-org-volume = pkgs.callPackage ./pkgs/emacs-org-volume { inherit emacsPackages; };
   emacs-ob-phpstan = pkgs.callPackage ./pkgs/emacs-ob-phpstan { inherit emacsPackages; };
   emacs-ob-treesitter = pkgs.callPackage ./pkgs/emacs-ob-treesitter { inherit emacsPackages; };
   emacs-ob-racket = pkgs.callPackage ./pkgs/emacs-ob-racket { inherit emacsPackages; };
   emacs-ox-hatena = pkgs.callPackage ./pkgs/emacs-ox-hatena { inherit emacsPackages; };
   emacs-consult-tramp = pkgs.callPackage ./pkgs/emacs-consult-tramp { inherit emacsPackages; };
-  emacs-explain-pause-mode = pkgs.callPackage ./pkgs/emacs-explain-pause-mode { inherit emacsPackages; };
+  emacs-explain-pause-mode = pkgs.callPackage ./pkgs/emacs-explain-pause-mode {
+    inherit emacsPackages;
+  };
   emacs-mu4e-dashboard = pkgs.callPackage ./pkgs/emacs-mu4e-dashboard { inherit emacsPackages; };
   emacs-nskk = pkgs.callPackage ./pkgs/emacs-nskk { inherit emacsPackages; };
+  emacs-kuro = pkgs.callPackage ./pkgs/emacs-kuro { inherit emacsPackages; };
   emacs-sudden-death = pkgs.callPackage ./pkgs/emacs-sudden-death { inherit emacsPackages; };
   emacs-zalgo-mode = pkgs.callPackage ./pkgs/emacs-zalgo-mode { inherit emacsPackages; };
   emacs-ob-fish = pkgs.callPackage ./pkgs/emacs-ob-fish { inherit emacsPackages; };
