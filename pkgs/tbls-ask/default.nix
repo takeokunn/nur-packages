@@ -5,7 +5,7 @@
 }:
 buildGo125Module {
   pname = "tbls-ask";
-  version = "0.6.8";
+  version = "0.6.9";
   src = fetchFromGitHub {
     owner = "k1LoW";
     repo = "tbls-ask";
