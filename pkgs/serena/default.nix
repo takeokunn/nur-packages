@@ -57,7 +57,16 @@ let
   pywebview = python3Packages.pywebview.overridePythonAttrs (
     old:
     lib.optionalAttrs stdenv.hostPlatform.isDarwin {
-      dependencies = (old.dependencies or [ ]) ++ [ pyobjc-framework-uniformtypeidentifiers ];
+      # nixpkgs' pywebview always depends on pyside6 (Qt), even on Darwin where
+      # pyobjc already provides the native Cocoa backend. pywebview picks its
+      # backend dynamically at runtime, so dropping the unused Qt backend here
+      # avoids building qtconnectivity, whose linking crashes Apple's ld on
+      # this host (`Trace/BPT trap: 5`, exit 133) with no cached build available.
+      dependencies =
+        (builtins.filter (
+          dep: dep != python3Packages.pyside6 && dep != python3Packages.qtpy
+        ) (old.dependencies or [ ]))
+        ++ [ pyobjc-framework-uniformtypeidentifiers ];
     }
   );
 in
