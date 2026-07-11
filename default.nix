@@ -83,6 +83,7 @@
 
   # Emacs packages
   emacs-arto = pkgs.callPackage ./pkgs/emacs-arto { inherit emacsPackages; };
+  emacs-doclive = pkgs.callPackage ./pkgs/emacs-doclive { inherit emacsPackages; };
   emacs-rainbow-csv = pkgs.callPackage ./pkgs/emacs-rainbow-csv { inherit emacsPackages; };
   emacs-soft-narrow = pkgs.callPackage ./pkgs/emacs-soft-narrow { inherit emacsPackages; };
   emacs-php-doc-block = pkgs.callPackage ./pkgs/emacs-php-doc-block { inherit emacsPackages; };
