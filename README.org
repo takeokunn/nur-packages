@@ -35,6 +35,7 @@ My personal [[https://github.com/nix-community/NUR][NUR]] repository.
 | =z_ai-coding-helper=             | GLM Coding Plan Helper for managing multiple coding tools                         |
 | =metabase-mcp=                   | MCP server for Metabase integration                                               |
 | =kakehashi=                      | Tree-sitter based Language Server bridging multiple language servers               |
+| =paredit-cli=                    | Structure-editing CLI for safe S-expression refactoring by AI coding agents        |
 
 *** Fish Shell Plugins
 

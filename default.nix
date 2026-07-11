@@ -44,6 +44,7 @@
       null;
   kakehashi = pkgs.callPackage ./pkgs/kakehashi { };
   kuro = pkgs.callPackage ./pkgs/kuro { };
+  paredit-cli = pkgs.callPackage ./pkgs/paredit-cli { };
   tmux-dart = pkgs.callPackage ./pkgs/tmux-dart { };
   # Swift toolchain and packages (Darwin only)
   swift-bin = if pkgs.stdenv.isDarwin then pkgs.callPackage ./pkgs/swift-bin { } else null;
