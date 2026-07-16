@@ -72,7 +72,7 @@ let
 in
 python3Packages.buildPythonApplication (finalAttrs: {
   pname = "serena";
-  version = "1.5.3";
+  version = "1.6.0";
   pyproject = true;
 
   src = fetchFromGitHub {
