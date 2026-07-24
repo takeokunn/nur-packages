@@ -14,7 +14,7 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "kakehashi";
-  version = "benchmark/semantic-phase-metrics-final-2026-07-23";
+  version = "benchmark/semantic-snapshot-cache-first-candidate-2026-07-24";
 
   src = fetchFromGitHub {
     owner = "atusy";
