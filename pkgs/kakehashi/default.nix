@@ -14,7 +14,7 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "kakehashi";
-  version = "benchmark/semantic-snapshot-cache-first-candidate-2026-07-24";
+  version = "0.8.0";
 
   src = fetchFromGitHub {
     owner = "atusy";

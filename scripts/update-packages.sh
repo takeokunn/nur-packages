@@ -65,6 +65,15 @@ GITHUB_UNSTABLE_PACKAGES=(
     "vimdoc-ja:vim-jp/vimdoc-ja:master"
 )
 
+# Packages whose upstream repo publishes non-release tags (e.g. benchmark/CI
+# snapshot tags) alongside real releases. nix-update's default tag picker treats
+# any tag as a candidate, so without a regex restricting it to real semver
+# releases it can pick up one of these and set version/rev to garbage.
+# Format: "nix-pkg-name:version-regex"
+VERSION_REGEX_PACKAGES=(
+    "kakehashi:^v(\d+\.\d+\.\d+)$" # atusy/kakehashi also tags ad-hoc "benchmark/..." snapshots
+)
+
 # Packages to skip in automated updates (require manual update or have special build complexity)
 # Format: "nix-pkg-name"
 SKIP_PACKAGES=(
@@ -144,6 +153,17 @@ is_npm_platform_binary_package() {
 get_npm_platform_binary_info() {
     local pkg="$1"
     for entry in "${NPM_PLATFORM_BINARY_PACKAGES[@]}"; do
+        if [[ "${entry%%:*}" == "$pkg" ]]; then
+            echo "${entry#*:}"
+            return 0
+        fi
+    done
+    return 1
+}
+
+get_version_regex() {
+    local pkg="$1"
+    for entry in "${VERSION_REGEX_PACKAGES[@]}"; do
         if [[ "${entry%%:*}" == "$pkg" ]]; then
             echo "${entry#*:}"
             return 0
@@ -465,7 +485,13 @@ update_package() {
     local pkg="$1"
     echo "Updating: $pkg"
 
-    if nix-update -f "$REPO_ROOT/default.nix" "$pkg" 2>&1; then
+    local version_regex
+    local -a extra_args=()
+    if version_regex=$(get_version_regex "$pkg"); then
+        extra_args+=(--version-regex "$version_regex")
+    fi
+
+    if nix-update -f "$REPO_ROOT/default.nix" "${extra_args[@]}" "$pkg" 2>&1; then
         echo "  [OK] $pkg updated successfully"
         return 0
     else
