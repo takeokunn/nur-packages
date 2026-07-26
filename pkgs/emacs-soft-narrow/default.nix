@@ -6,7 +6,7 @@
 
 emacsPackages.trivialBuild {
   pname = "soft-narrow";
-  version = "1.1.0";
+  version = "1.2.1";
 
   src = fetchFromGitHub {
     owner = "takeokunn";
