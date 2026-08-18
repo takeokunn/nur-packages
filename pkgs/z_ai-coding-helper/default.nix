@@ -23,11 +23,11 @@
 }:
 
 let
-  version = "0.0.7";
+  version = "0.1.0";
 
   tarball = fetchurl {
     url = "https://registry.npmjs.org/@z_ai/coding-helper/-/coding-helper-${version}.tgz";
-    hash = "sha256-OJe8fF4ohJ+2XDnM8DrLwFdslHliGTP6ApbungIBxwM=";
+    hash = "sha256-AdtgeM5QuccDLWrDEY/R7LwDxGRNShAKMeodoL0er4E=";
   };
 
   src = runCommand "z_ai-coding-helper-src-${version}" { nativeBuildInputs = [ jq ]; } ''
@@ -45,7 +45,7 @@ buildNpmPackage {
 
   nodejs = nodejs_22;
 
-  npmDepsHash = "sha256-qLd5r5EmOyt/nWb2498T/bSxJpwk4+z0Sb4xmfxn4iU=";
+  npmDepsHash = "sha256-LwAlYGf3rLdbMD+s26R3P6ChwsyoMmWmbKhBLDReQ10=";
 
   dontNpmBuild = true;
 
