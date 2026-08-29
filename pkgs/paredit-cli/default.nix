@@ -6,16 +6,16 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "paredit-cli";
-  version = "1.6.1";
+  version = "1.6.2";
 
   src = fetchFromGitHub {
     owner = "takeokunn";
     repo = "paredit-cli";
     rev = "v${version}";
-    hash = "sha256-JCLf4+purB5lxINI9qzLNy7fYfrrWoqW2IhoILR9VIo=";
+    hash = "sha256-UHHLK5Q9ZuO+CdpwRL32T9TqAxQj+pKSKXUZXZ7z7+k=";
   };
 
-  cargoHash = "sha256-KuCA8Qqn49u+u8UndXiQsWSdVb2iSbdouwL4u29oh00=";
+  cargoHash = "sha256-BTuJLGLAr19I9ylWyk4FDnZ9bA3qKP4T+PUTYJW7zwU=";
 
   meta = {
     description = "Structure-editing CLI for safe S-expression refactoring by AI coding agents";
