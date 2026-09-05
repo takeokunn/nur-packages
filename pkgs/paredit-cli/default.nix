@@ -6,16 +6,16 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "paredit-cli";
-  version = "1.6.2";
+  version = "1.6.3";
 
   src = fetchFromGitHub {
     owner = "takeokunn";
     repo = "paredit-cli";
     rev = "v${version}";
-    hash = "sha256-UHHLK5Q9ZuO+CdpwRL32T9TqAxQj+pKSKXUZXZ7z7+k=";
+    hash = "sha256-UnHnKf6RiaOXOq2ZBoYLtE9/vDz05tFtI69juYrKPno=";
   };
 
-  cargoHash = "sha256-BTuJLGLAr19I9ylWyk4FDnZ9bA3qKP4T+PUTYJW7zwU=";
+  cargoHash = "sha256-GUSdP9azFBVqIFj2SVN4SJEJc1tb7pGkoLqg7xzjKU4=";
 
   # Upstream runs the suite in its own `nextest` flake check and sets
   # doCheck = false on packages.default for the same reason: re-running 15k
