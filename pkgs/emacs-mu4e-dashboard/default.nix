@@ -6,13 +6,13 @@
 
 emacsPackages.trivialBuild {
   pname = "mu4e-dashboard";
-  version = "unstable-2024-05-28";
+  version = "unstable-2026-07-20";
 
   src = fetchFromGitHub {
     owner = "rougier";
     repo = "mu4e-dashboard";
-    rev = "c9c09b7ed6433070de148b656ac273b7fb7cec07";
-    hash = "sha256-bCelxaT+qaR2W80Cr591A4cRycIFJmXjeY8/aqIpl5g=";
+    rev = "d40f501edad5078386e43a74b2bc3e2b22e33009";
+    hash = "sha256-RVhhJy1morDbz5UXQ/5jwx1ArtUv0J8vHw23R3nEwiE=";
   };
 
   packageRequires = with emacsPackages; [

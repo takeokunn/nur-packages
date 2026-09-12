@@ -6,13 +6,13 @@
 
 emacsPackages.trivialBuild {
   pname = "warm-mode";
-  version = "unstable-2025-04-15";
+  version = "unstable-2026-09-06";
 
   src = fetchFromGitHub {
     owner = "smallwat3r";
     repo = "emacs-warm-mode";
-    rev = "27362826e970ed0e902bee3512d97dc02f196a7b";
-    hash = "sha256-0GS73hleV15m5eCtfUlMEzgBr3EQ5fNtcJLdSmvWdEc=";
+    rev = "56309813b86daf20b663b457221569b49c5199f2";
+    hash = "sha256-ZSp3NaoewdPZGk7amtHsb7rrK6ziGw94YfVauVY2KH4=";
   };
 
   meta = {

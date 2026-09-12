@@ -6,13 +6,13 @@
 
 vimUtils.buildVimPlugin {
   pname = "skkeleton";
-  version = "2.0.2";
+  version = "unstable-2026-09-11";
 
   src = fetchFromGitHub {
     owner = "vim-skk";
     repo = "skkeleton";
-    rev = "158ae753bc5099ab12537c23152926c42b1f7c3a";
-    hash = "sha256-Ee55oGlNCoKwvDxaJyRCjqY89+DU2bP+7t8o/kkh8lU=";
+    rev = "5fd94f5912ceffc4d6ea167d78e45949a9e2f18c";
+    hash = "sha256-Z/3hQTt4uHj8FsunQzX3btyxuzMhTkKBTQ0UMx8Usn0=";
   };
 
   meta = {

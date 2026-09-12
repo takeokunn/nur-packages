@@ -6,13 +6,13 @@
 
 emacsPackages.trivialBuild {
   pname = "ob-phpstan";
-  version = "unstable-2023-03-11";
+  version = "unstable-2026-06-18";
 
   src = fetchFromGitHub {
     owner = "emacs-php";
     repo = "ob-phpstan";
-    rev = "99ab8b56b92037a89fa5493697b149c937ed4b2b";
-    hash = "sha256-ZvMvYhGbLiCagKQoH4WC0bSAqLLIqCJaDzsuG6VHF/o=";
+    rev = "48a6afcca8ea99acb12a2d306ca3e9e3ac4baaf4";
+    hash = "sha256-vY7zLr/pcAYLd6u0UGP+W10fcDpz/kCEMqikX6buUyk=";
   };
 
   meta = {

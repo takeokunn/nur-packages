@@ -6,13 +6,13 @@
 
 stdenvNoCC.mkDerivation {
   pname = "sublime-justfile";
-  version = "4148-1.1.5";
+  version = "unstable-2026-04-12";
 
   src = fetchFromGitHub {
     owner = "nk9";
     repo = "just_sublime";
-    rev = "f42cdb012b6033035ee46bfeac1ecd7dca460e55";
-    hash = "sha256-VxI5BPrNVOwIRwdZKm8OhTuXCVKOdG8OGKiCne9cwc8=";
+    rev = "2dcc60286d1af6a4c6c2c03d50bc03230dc56ce3";
+    hash = "sha256-XlxItYVL9I612DhfCGHiUdv6U6Nv9LOlEbJVf1zTwPg=";
   };
 
   installPhase = ''

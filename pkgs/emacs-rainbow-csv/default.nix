@@ -6,13 +6,13 @@
 
 emacsPackages.trivialBuild {
   pname = "rainbow-csv";
-  version = "unstable-2024-10-21";
+  version = "unstable-2026-06-19";
 
   src = fetchFromGitHub {
     owner = "emacs-vs";
     repo = "rainbow-csv";
-    rev = "5b0bbaca8c6c1785b5ddd48fdf16817acc046ad2";
-    hash = "sha256-K2sSCOxqsNI0f4bPHQ9Mg3YF0GQDGoQWa9U8HKtcEJs=";
+    rev = "5763375e48e870ffd284e051eb2428cac743d7e0";
+    hash = "sha256-NcFI38TnPHWMUdwX3UBZVjiPj6uCl0+WnIMNdzQ73G8=";
   };
 
   packageRequires = [ emacsPackages.csv-mode ];
