@@ -6,13 +6,13 @@
 
 emacsPackages.trivialBuild {
   pname = "doclive";
-  version = "1.3.0";
+  version = "1.4.0";
 
   src = fetchFromGitHub {
     owner = "takeokunn";
     repo = "doclive";
-    rev = "c1433600c4a15cb7e2c1414a1a5c0a492f8d59f4";
-    hash = "sha256-mbsgejtARAGH29Gd5S/d2mXdErPbWgOK7gH9kvVTqR0=";
+    rev = "45d861ebd864ad917be849c10a4c8460905e7202";
+    hash = "sha256-qDVxDAZW7Ibu0w2CkuRVLAi1ELNC1bgn2w3KHLOnBVM=";
   };
 
   packageRequires = [ emacsPackages.org ];
