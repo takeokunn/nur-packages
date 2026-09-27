@@ -36,6 +36,7 @@ My personal [[https://github.com/nix-community/NUR][NUR]] repository.
 | =metabase-mcp=                   | MCP server for Metabase integration                                               |
 | =kakehashi=                      | Tree-sitter based Language Server bridging multiple language servers               |
 | =paredit-cli=                    | Structure-editing CLI for safe S-expression refactoring by AI coding agents        |
+| =aitools=                        | AI-agent-oriented replacement for cat/grep/sed/find/jq/tar and friends             |
 
 *** Fish Shell Plugins
 
@@ -236,6 +237,13 @@ nix develop
 2. Add =default.nix= with package definition
 3. Register the package in =default.nix= at repository root
 4. Test build with =nix-build -A <package-name>=
+
+Packages built via an upstream flake rather than a plain nixpkgs derivation (currently =arto= and
+=aitools=) don't fit this flow: they're threaded into =default.nix= as an extra argument computed in
+=flake.nix='s =legacyPackages= instead of a =pkgs/<package-name>/= directory, and =nix-build -A
+<package-name>= won't build them (no flake context). Test with =nix build .#<package-name>= instead.
+Neither package is exercised by this repository's CI, and flake inputs update unreviewed twice daily
+(see below); verify manually after a dependency bump.
 
 *** Package Update Script
 

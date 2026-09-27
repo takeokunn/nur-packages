@@ -10,6 +10,7 @@
   pkgs ? import <nixpkgs> { },
   emacsPackages ? pkgs.emacsPackages,
   craneLib ? null,
+  aitoolsPackage ? null,
 }:
 
 {
@@ -55,6 +56,14 @@
 
   # Desktop apps (macOS)
   arto = if craneLib != null then pkgs.callPackage ./pkgs/arto { inherit craneLib; } else null;
+
+  # Common Lisp CLI built via cl-nix-forge (a flake-composed toolchain, not a
+  # single nixpkgs derivation), so it has no pkgs/aitools/ and is threaded in
+  # from flake.nix the same way craneLib/arto are, rather than following the
+  # pkgs/<name>/default.nix + callPackage convention above. Like arto, it is
+  # null under plain `nix-env -f .`/`ci.nix` (no flake context, no aitoolsPackage),
+  # so it is not exercised by this repo's existing CI build/cache step.
+  aitools = aitoolsPackage;
 
   # Fish plugins
   fish-artisan-completion = pkgs.callPackage ./pkgs/fish-artisan-completion { };

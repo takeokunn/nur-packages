@@ -38,3 +38,28 @@ jobs:
             -I "$PWD"
       - name: Build nix packages
         run: nix shell -f '<nixpkgs>' nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs
+
+  # Packages built via an upstream flake rather than a plain nixpkgs derivation (arto, aitools) are
+  # threaded into default.nix from flake.nix's legacyPackages rather than through ci.nix's
+  # `import ./default.nix { inherit pkgs; }` (no flake context there, so they evaluate to null and
+  # ci.nix's isDerivation filter silently drops them). The `tests` job above never builds them.
+  #
+  # arto is deliberately not built here yet: pkgs/arto/default.nix pins pnpm_9, which nixpkgs has
+  # since removed as EOL, so it fails independently of this job's own wiring. Tracked separately
+  # rather than fixed here, since a pnpm version bump needs a new fetchPnpmDeps hash and this job
+  # exists to cover aitools.
+  flake-packages:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Setup nix
+        uses: ./.github/actions/setup-nix
+        with:
+          cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Build aitools
+        run: nix build .#aitools --no-link --print-out-paths
