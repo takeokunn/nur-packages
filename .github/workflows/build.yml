@@ -38,3 +38,26 @@ jobs:
             -I "$PWD"
       - name: Build nix packages
         run: nix shell -f '<nixpkgs>' nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs
+
+  # Packages built via an upstream flake rather than a plain nixpkgs derivation (arto, aitools) are
+  # threaded into default.nix from flake.nix's legacyPackages rather than through ci.nix's
+  # `import ./default.nix { inherit pkgs; }` (no flake context there, so they evaluate to null and
+  # ci.nix's isDerivation filter silently drops them). The `tests` job above never builds them.
+  flake-packages:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Setup nix
+        uses: ./.github/actions/setup-nix
+        with:
+          cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Build aitools
+        run: nix build .#aitools --no-link --print-out-paths
+      - name: Build arto
+        if: matrix.os == 'macos-latest'
+        run: nix build .#arto --no-link --print-out-paths
