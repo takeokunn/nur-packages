@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
     crane.url = "github:ipetkov/crane";
+    aitools.url = "github:nerima-lisp/aitools";
   };
 
   outputs =
@@ -9,6 +10,7 @@
       self,
       nixpkgs,
       crane,
+      aitools,
     }:
     let
       systems = [
@@ -39,7 +41,13 @@
         let
           pkgs = pkgsFor system;
           craneLib = crane.mkLib pkgs;
-          nurPkgs = import ./default.nix { inherit pkgs craneLib; };
+          # aitools' own flake only declares packages for these two systems.
+          aitoolsPackage =
+            if builtins.elem system [ "x86_64-linux" "aarch64-darwin" ] then
+              aitools.packages.${system}.default
+            else
+              null;
+          nurPkgs = import ./default.nix { inherit pkgs craneLib aitoolsPackage; };
         in
         nurPkgs
       );
