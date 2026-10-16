@@ -5,14 +5,14 @@
 }:
 buildGo126Module rec {
   pname = "gogcli";
-  version = "0.44.0";
+  version = "0.45.0";
   src = fetchFromGitHub {
     owner = "steipete";
     repo = "gogcli";
     rev = "refs/tags/v${version}";
-    hash = "sha256-aqp122szMkMJ8Qf11L++kNrY79JWDIxq38nbLDJA/Tk=";
+    hash = "sha256-gRxiHf+3/YTuefU5f5TDtcd3wrOKldu3K5CSX/5wduI=";
   };
-  vendorHash = "sha256-x/fwNWGLQ8fYgJ+DzBzFgUKto4MhN0CRxmXhWyVtAg4=";
+  vendorHash = "sha256-jZRYbU48wzbkdscjmT7yO/9DUK54uuitZGofzAwZOzI=";
 
   doCheck = false;
 
