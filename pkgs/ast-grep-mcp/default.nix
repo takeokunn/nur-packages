@@ -36,7 +36,12 @@ python313Packages.buildPythonApplication {
     mcp
   ];
 
-  makeWrapperArgs = [ "--prefix PATH : ${lib.makeBinPath [ ast-grep ]}" ];
+  makeWrapperArgs = [
+    "--prefix"
+    "PATH"
+    ":"
+    (lib.makeBinPath [ ast-grep ])
+  ];
 
   meta = {
     description = "MCP server providing structural code search via ast-grep";
