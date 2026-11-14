@@ -3,7 +3,6 @@
   lib,
   fetchFromGitHub,
   fortls,
-  nix-update-script,
   nodejs,
   pyright,
   python3Packages,
@@ -67,6 +66,11 @@ let
           dep: dep != python3Packages.pyside6 && dep != python3Packages.qtpy
         ) (old.dependencies or [ ]))
         ++ [ pyobjc-framework-uniformtypeidentifiers ];
+      # nixpkgs marks this broken because its last successful Darwin Hydra build is old.
+      # This override builds on Darwin.
+      meta = old.meta // {
+        broken = false;
+      };
     }
   );
 in
@@ -78,29 +82,25 @@ python3Packages.buildPythonApplication (finalAttrs: {
   src = fetchFromGitHub {
     owner = "oraios";
     repo = "serena";
-    rev = "737ef7672334ab60e8bb55c92354292ddd15660e";
-    hash = "sha256-qcQxFfDa83/r2KNghmB3jpDAodkxEf0LDzA/jr8gIW4=";
+    rev = "v${finalAttrs.version}";
+    hash = "sha256-rwaZ8DmUKgdgi3lWRN2M67ZJLnJGfe76/V+a+zjAaMU=";
   };
 
   postPatch = ''
     substituteInPlace src/solidlsp/language_servers/pyright_server.py \
-      --replace-fail 'return [core_path, "-m", "pyright.langserver", "--stdio"]' \
-        'return ["${lib.getExe' pyright "pyright-langserver"}", "--stdio"]'
+      --replace-fail '            self._custom_settings,' \
+        '            SolidLSPSettings.CustomLSSettings({**self._custom_settings.settings, "ls_path": self._custom_settings.get("ls_path", "${lib.getExe' pyright "pyright-langserver"}")}),'
   '';
 
   build-system = [ python3Packages.hatchling ];
 
   pythonRelaxDeps = true;
 
-  pythonRemoveDeps = [
-    "pyright"
-    "dotenv"
-  ];
-
   dependencies =
     (with python3Packages; [
       anthropic
       beautifulsoup4
+      click
       cryptography
       docstring-parser
       flask
@@ -108,6 +108,7 @@ python3Packages.buildPythonApplication (finalAttrs: {
       joblib
       lsprotocol
       mcp
+      oslex
       overrides
       pathspec
       psutil
@@ -115,6 +116,7 @@ python3Packages.buildPythonApplication (finalAttrs: {
       pygls
       pystray
       python-dotenv
+      python-multipart
       pyyaml
       requests
       ruamel-yaml
@@ -139,14 +141,10 @@ python3Packages.buildPythonApplication (finalAttrs: {
 
   doCheck = false;
 
-  passthru.updateScript = nix-update-script {
-    extraArgs = [ "--version=branch" ];
-  };
-
   meta = {
     description = "Powerful coding agent toolkit providing semantic retrieval and editing capabilities";
     homepage = "https://github.com/oraios/serena";
-    license = lib.licenses.mit;
+    license = lib.licenses.gpl3Plus;
     maintainers = [ ];
     mainProgram = "serena";
     platforms = lib.platforms.unix;
