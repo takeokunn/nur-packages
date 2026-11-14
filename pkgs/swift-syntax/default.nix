@@ -6,6 +6,6 @@
 fetchFromGitHub {
   owner = "swiftlang";
   repo = "swift-syntax";
-  rev = "0687f71944021d616d34d922343dcef086855920";
-  hash = "sha256-kKT7LWR49dsY/wpNlSKd/u0ouX8sPyJY5Mbvjn7YINo=";
+  rev = "050f1a346fbbac0ca2cfb15a95274f7bd1cf0ccf";
+  hash = "sha256-qRs7x0c8RSIC7yXjUDnF6HaEhkWsXPeAoLa9Tc538cI=";
 }

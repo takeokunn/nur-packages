@@ -6,6 +6,6 @@
 fetchFromGitHub {
   owner = "apple";
   repo = "swift-argument-parser";
-  rev = "011f0c765fb46d9cac61bca19be0527e99c98c8b";
-  hash = "sha256-Ud0M/ix7DRJV4N63dsRJtGdlfH/5WS+Hp4kHGgtskr8=";
+  rev = "6a52f3251125d74daf04fcbd5e6f08a75d074382";
+  hash = "sha256-BWm2ZbNIvlamNp8cxoicFlAcujjhH22VPzs67lEIXWU=";
 }

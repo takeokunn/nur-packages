@@ -8,11 +8,11 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "swift-bin";
-  version = "6.2.3";
+  version = "6.4.2";
 
   src = fetchurl {
     url = "https://download.swift.org/swift-${version}-release/xcode/swift-${version}-RELEASE/swift-${version}-RELEASE-osx.pkg";
-    hash = "sha256-we2Ez1QyhsVJyqzMR+C0fYxhw8j+284SBd7cvr52Aag=";
+    hash = "sha256-Cn2EiZANIdv18Bh8tXDmRqTAIm0N3vLL3ox/VN/nlzY=";
   };
 
   nativeBuildInputs = [

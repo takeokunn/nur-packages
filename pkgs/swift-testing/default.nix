@@ -6,6 +6,6 @@
 fetchFromGitHub {
   owner = "apple";
   repo = "swift-testing";
-  rev = "399f76dcd91e4c688ca2301fa24a8cc6d9927211";
-  hash = "sha256-nOSqZxgXWKZbhWJXElx24J5b3M5woLEPNzfgM7RLq/Y=";
+  rev = "288a2328ff846444543d58054a9dec00b1a91efc";
+  hash = "sha256-zCduKN1MKCsPKJyyRZEW/t4lw5LBQrdt31wTn+qstN8=";
 }
