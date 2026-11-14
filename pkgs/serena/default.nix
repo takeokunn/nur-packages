@@ -3,7 +3,6 @@
   lib,
   fetchFromGitHub,
   fortls,
-  nix-update-script,
   nodejs,
   pyright,
   python3Packages,
@@ -141,10 +140,6 @@ python3Packages.buildPythonApplication (finalAttrs: {
   ];
 
   doCheck = false;
-
-  passthru.updateScript = nix-update-script {
-    extraArgs = [ "--version=branch" ];
-  };
 
   meta = {
     description = "Powerful coding agent toolkit providing semantic retrieval and editing capabilities";
