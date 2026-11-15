@@ -63,8 +63,11 @@ jobs:
           cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build aitools
         run: nix build .#aitools --no-link --print-out-paths
+      - name: Build serena
+        timeout-minutes: 30
+        run: nix build -L .#serena --out-link result-serena
       - name: Check Serena MCP server startup
+        timeout-minutes: 5
         run: |
-          nix build .#serena --out-link result-serena
           python3 pkgs/serena/mcp_server_check.py result-serena/bin/serena "$(mktemp -d)"
           rm result-serena
