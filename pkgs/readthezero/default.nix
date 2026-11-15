@@ -57,5 +57,8 @@ stdenv.mkDerivation (finalAttrs: {
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ takeokunn ];
     platforms = lib.platforms.all;
+    # nixpkgs lightningcss fails on aarch64-darwin in Hydra build #352412984 (jemalloc-sys v0.3.2).
+    # Remove when Hydra's lightningcss.aarch64-darwin job succeeds again.
+    broken = stdenv.hostPlatform.isDarwin;
   };
 })

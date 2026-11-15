@@ -3,12 +3,16 @@ description: Set up Nix environment for GitHub Actions
 inputs:
   cachix-auth-token:
     required: true
+  nix-path:
+    description: Nix path to use for nixpkgs
+    required: false
+    default: nixpkgs=channel:nixos-unstable
 runs:
   using: composite
   steps:
     - uses: cachix/install-nix-action@v31.10.1
       with:
-        nix_path: nixpkgs=channel:nixos-unstable
+        nix_path: ${{ inputs.nix-path }}
     - uses: cachix/cachix-action@v16
       with:
         name: takeokunn-nixos-configuration
