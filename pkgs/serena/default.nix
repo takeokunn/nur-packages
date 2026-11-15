@@ -57,6 +57,7 @@ let
     old:
     {
       # Serena uses pywebview for its Windows/macOS window; Qt pulls qtwebengine into Linux.
+      # On Darwin, qtconnectivity's link crashes Apple's ld (`Trace/BPT trap: 5`).
       dependencies =
         (builtins.filter (
           dep: dep != python3Packages.pyside6 && dep != python3Packages.qtpy
