@@ -3,7 +3,6 @@
   lib,
   fetchFromGitHub,
   fortls,
-  nix-update-script,
   nodejs,
   pyright,
   python3Packages,
@@ -56,17 +55,21 @@ let
 
   pywebview = python3Packages.pywebview.overridePythonAttrs (
     old:
-    lib.optionalAttrs stdenv.hostPlatform.isDarwin {
-      # nixpkgs' pywebview always depends on pyside6 (Qt), even on Darwin where
-      # pyobjc already provides the native Cocoa backend. pywebview picks its
-      # backend dynamically at runtime, so dropping the unused Qt backend here
-      # avoids building qtconnectivity, whose linking crashes Apple's ld on
-      # this host (`Trace/BPT trap: 5`, exit 133) with no cached build available.
+    {
+      # Serena uses pywebview for its Windows/macOS window; Qt pulls qtwebengine into Linux.
+      # On Darwin, qtconnectivity's link crashes Apple's ld (`Trace/BPT trap: 5`).
       dependencies =
         (builtins.filter (
           dep: dep != python3Packages.pyside6 && dep != python3Packages.qtpy
         ) (old.dependencies or [ ]))
-        ++ [ pyobjc-framework-uniformtypeidentifiers ];
+        ++ lib.optionals stdenv.hostPlatform.isDarwin [ pyobjc-framework-uniformtypeidentifiers ];
+    }
+    // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
+      # nixpkgs marks this broken because its last successful Darwin Hydra build is old.
+      # This override builds on Darwin.
+      meta = old.meta // {
+        broken = false;
+      };
     }
   );
 in
@@ -78,29 +81,25 @@ python3Packages.buildPythonApplication (finalAttrs: {
   src = fetchFromGitHub {
     owner = "oraios";
     repo = "serena";
-    rev = "737ef7672334ab60e8bb55c92354292ddd15660e";
-    hash = "sha256-qcQxFfDa83/r2KNghmB3jpDAodkxEf0LDzA/jr8gIW4=";
+    rev = "v${finalAttrs.version}";
+    hash = "sha256-rwaZ8DmUKgdgi3lWRN2M67ZJLnJGfe76/V+a+zjAaMU=";
   };
 
   postPatch = ''
     substituteInPlace src/solidlsp/language_servers/pyright_server.py \
-      --replace-fail 'return [core_path, "-m", "pyright.langserver", "--stdio"]' \
-        'return ["${lib.getExe' pyright "pyright-langserver"}", "--stdio"]'
+      --replace-fail '            self._custom_settings,' \
+        '            SolidLSPSettings.CustomLSSettings({**self._custom_settings.settings, "ls_path": self._custom_settings.get("ls_path", "${lib.getExe' pyright "pyright-langserver"}")}),'
   '';
 
   build-system = [ python3Packages.hatchling ];
 
   pythonRelaxDeps = true;
 
-  pythonRemoveDeps = [
-    "pyright"
-    "dotenv"
-  ];
-
   dependencies =
     (with python3Packages; [
       anthropic
       beautifulsoup4
+      click
       cryptography
       docstring-parser
       flask
@@ -108,6 +107,7 @@ python3Packages.buildPythonApplication (finalAttrs: {
       joblib
       lsprotocol
       mcp
+      oslex
       overrides
       pathspec
       psutil
@@ -115,6 +115,7 @@ python3Packages.buildPythonApplication (finalAttrs: {
       pygls
       pystray
       python-dotenv
+      python-multipart
       pyyaml
       requests
       ruamel-yaml
@@ -139,14 +140,10 @@ python3Packages.buildPythonApplication (finalAttrs: {
 
   doCheck = false;
 
-  passthru.updateScript = nix-update-script {
-    extraArgs = [ "--version=branch" ];
-  };
-
   meta = {
     description = "Powerful coding agent toolkit providing semantic retrieval and editing capabilities";
     homepage = "https://github.com/oraios/serena";
-    license = lib.licenses.mit;
+    license = lib.licenses.gpl3Plus;
     maintainers = [ ];
     mainProgram = "serena";
     platforms = lib.platforms.unix;
