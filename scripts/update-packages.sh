@@ -22,6 +22,14 @@ NPM_PLATFORM_BINARY_PACKAGES=(
     "oh-my-openagent:oh-my-opencode:darwin-arm64/aarch64-darwin,linux-x64/x86_64-linux"
 )
 
+# GitHub release assets built per platform, followed through a moving tag rather than the newest
+# release: the version becomes the v<version> release tag on the commit that tag points at.
+# Asset URLs must contain the asset suffix on the line before their hash.
+# Format: "nix-pkg-name:owner/repo:moving-tag:asset-suffix1/nix-system1,asset-suffix2/nix-system2,..."
+GITHUB_TAG_BINARY_PACKAGES=(
+    "gbrain:garrytan/gbrain:stable:darwin-arm64/aarch64-darwin,linux-x64/x86_64-linux"
+)
+
 # GitHub packages with unstable versions (commit-based)
 # Format: "nix-pkg-name:owner/repo:branch"
 GITHUB_UNSTABLE_PACKAGES=(
@@ -183,6 +191,25 @@ is_github_unstable_package() {
 get_github_unstable_info() {
     local pkg="$1"
     for entry in "${GITHUB_UNSTABLE_PACKAGES[@]}"; do
+        if [[ "${entry%%:*}" == "$pkg" ]]; then
+            echo "${entry#*:}"
+            return 0
+        fi
+    done
+    return 1
+}
+
+is_github_tag_binary_package() {
+    local pkg="$1"
+    for entry in "${GITHUB_TAG_BINARY_PACKAGES[@]}"; do
+        [[ "${entry%%:*}" == "$pkg" ]] && return 0
+    done
+    return 1
+}
+
+get_github_tag_binary_info() {
+    local pkg="$1"
+    for entry in "${GITHUB_TAG_BINARY_PACKAGES[@]}"; do
         if [[ "${entry%%:*}" == "$pkg" ]]; then
             echo "${entry#*:}"
             return 0
@@ -500,6 +527,128 @@ update_package() {
     fi
 }
 
+# Update a GitHub release binary package to the release its moving tag points at. Every asset hash is
+# fetched before default.nix is touched, so a failed download leaves the file unchanged.
+update_github_tag_binary_package() {
+    local nix_pkg="$1"
+    local info
+    info=$(get_github_tag_binary_info "$nix_pkg")
+    local repo_slug="${info%%:*}"
+    local rest="${info#*:}"
+    local moving_tag="${rest%%:*}"
+    local platforms_str="${rest#*:}"
+    local default_nix="$REPO_ROOT/pkgs/$nix_pkg/default.nix"
+
+    echo "Updating GitHub tag binary package: $nix_pkg ($repo_slug@$moving_tag)"
+
+    if [[ ! -f "$default_nix" ]]; then
+        echo "  [ERROR] $default_nix not found"
+        return 2
+    fi
+
+    local current_version
+    current_version=$(perl -ne 'print $1 if /^\s*version\s*=\s*"([^"]+)"/' "$default_nix")
+    if [[ -z "$current_version" ]]; then
+        echo "  [ERROR] Could not extract current version"
+        return 2
+    fi
+    echo "  Current version: $current_version"
+
+    # An annotated tag lists its commit on a peeled "^{}" line; a lightweight tag lists it directly.
+    # ls-remote patterns match whole refs, so the peeled form needs its own pattern.
+    local refs
+    if ! refs=$(git ls-remote --tags "https://github.com/${repo_slug}" \
+        "refs/tags/${moving_tag}" "refs/tags/${moving_tag}^{}" "refs/tags/v*"); then
+        echo "  [ERROR] Could not list tags of $repo_slug"
+        return 2
+    fi
+
+    local target_commit
+    target_commit=$(MOVING_TAG="$moving_tag" perl -ane '
+        my ($sha, $ref) = @F;
+        $peeled = $sha if $ref eq "refs/tags/$ENV{MOVING_TAG}^{}";
+        $plain = $sha if $ref eq "refs/tags/$ENV{MOVING_TAG}";
+        END { print $peeled // $plain // "" }
+    ' <<< "$refs")
+    if [[ -z "$target_commit" ]]; then
+        echo "  [ERROR] Tag $moving_tag not found in $repo_slug"
+        return 2
+    fi
+
+    # Prefer a release tag's peeled commit over its tag object when both are listed.
+    local latest_version
+    latest_version=$(TARGET="$target_commit" perl -ane '
+        my ($sha, $ref) = @F;
+        next unless $ref =~ m{^refs/tags/v(\d+(?:\.\d+)+)(\^\{\})?$};
+        my ($ver, $peeled) = ($1, defined $2);
+        $commit{$ver} = $sha if $peeled || !exists $commit{$ver};
+        END {
+            my @hits = grep { $commit{$_} eq $ENV{TARGET} } keys %commit;
+            print scalar(@hits) == 1 ? $hits[0] : "";
+        }
+    ' <<< "$refs")
+    if [[ -z "$latest_version" ]]; then
+        echo "  [ERROR] No single v<version> tag shares commit $target_commit with $moving_tag"
+        return 2
+    fi
+    echo "  Version at $moving_tag: $latest_version"
+
+    if [[ "$current_version" == "$latest_version" ]]; then
+        echo "  [SKIP] Already at $moving_tag"
+        return 1
+    fi
+
+    local -a suffixes=()
+    local -a hashes=()
+    IFS=',' read -ra platform_pairs <<< "$platforms_str"
+    for pair in "${platform_pairs[@]}"; do
+        local asset_suffix="${pair%%/*}"
+        local asset_url
+        asset_url=$(perl -ne 'print "$1\n" if /url\s*=\s*"([^"]+)"/' "$default_nix" \
+            | grep -F -- "$asset_suffix" | head -n 1 \
+            | perl -pe "s/\\\$\\{version\\}/${latest_version}/g")
+        if [[ -z "$asset_url" ]]; then
+            echo "  [ERROR] No url for $asset_suffix in $default_nix"
+            return 2
+        fi
+
+        echo "  Fetching hash for $asset_url ..."
+        local raw_hash
+        raw_hash=$(nix-prefetch-url "$asset_url" --type sha256 2>/dev/null)
+        if [[ -z "$raw_hash" ]]; then
+            echo "  [ERROR] Failed to prefetch $asset_url"
+            return 2
+        fi
+
+        local new_hash
+        new_hash=$(nix hash convert --hash-algo sha256 --to sri "$raw_hash")
+        if [[ ! "$new_hash" =~ ^sha256-[A-Za-z0-9+/]+=*$ ]]; then
+            echo "  [ERROR] Invalid hash format: $new_hash"
+            return 2
+        fi
+        suffixes+=("$asset_suffix")
+        hashes+=("$new_hash")
+    done
+
+    local i
+    for i in "${!suffixes[@]}"; do
+        ASSET_SUFFIX="${suffixes[$i]}" NEW_HASH="${hashes[$i]}" \
+            perl -0777 -pi -e '
+                my $suffix = $ENV{ASSET_SUFFIX};
+                my $hash   = $ENV{NEW_HASH};
+                s|(\Q$suffix\E[^\n]*\n\s*hash\s*=\s*")[^"]+"|${1}${hash}"|;
+            ' "$default_nix"
+        if ! grep -qF -- "${hashes[$i]}" "$default_nix"; then
+            echo "  [ERROR] Hash for ${suffixes[$i]} was not written; $default_nix is partially updated"
+            return 2
+        fi
+    done
+    perl -pi -e "s/version = \"[^\"]+\"/version = \"${latest_version}\"/" "$default_nix"
+
+    echo "  [OK] $nix_pkg updated to $latest_version"
+    return 0
+}
+
 # Dispatch a package to the appropriate update strategy
 update_package_dispatch() {
     local pkg="$1"
@@ -513,15 +662,24 @@ update_package_dispatch() {
         update_npm_platform_binary_package "$pkg"
     elif is_github_unstable_package "$pkg"; then
         update_github_unstable_package "$pkg"
+    elif is_github_tag_binary_package "$pkg"; then
+        update_github_tag_binary_package "$pkg"
     else
         update_package "$pkg"
     fi
 }
 
-# Extract all package names from default.nix
+# Extract all package names from default.nix. Platform-guarded entries span several lines and never
+# match the one-line pattern, so the platform binary lists are added by name.
 extract_packages() {
-    grep -E '^\s+[a-zA-Z][a-zA-Z0-9_-]*\s*=\s*pkgs\.callPackage' "$REPO_ROOT/default.nix" \
-        | perl -pe 's/^\s+([a-zA-Z][a-zA-Z0-9_-]*)\s*=.*/$1/'
+    {
+        grep -E '^\s+[a-zA-Z][a-zA-Z0-9_-]*\s*=\s*pkgs\.callPackage' "$REPO_ROOT/default.nix" \
+            | perl -pe 's/^\s+([a-zA-Z][a-zA-Z0-9_-]*)\s*=.*/$1/'
+        local entry
+        for entry in "${NPM_PLATFORM_BINARY_PACKAGES[@]}" "${GITHUB_TAG_BINARY_PACKAGES[@]}"; do
+            echo "${entry%%:*}"
+        done
+    } | awk '!seen[$0]++'
 }
 
 main() {
