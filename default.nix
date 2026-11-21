@@ -43,6 +43,16 @@
       pkgs.callPackage ./pkgs/oh-my-openagent { }
     else
       null;
+  gbrain =
+    if
+      builtins.elem pkgs.stdenv.hostPlatform.system [
+        "aarch64-darwin"
+        "x86_64-linux"
+      ]
+    then
+      pkgs.callPackage ./pkgs/gbrain { }
+    else
+      null;
   kakehashi = pkgs.callPackage ./pkgs/kakehashi { };
   kuro = pkgs.callPackage ./pkgs/kuro { };
   paredit-cli = pkgs.callPackage ./pkgs/paredit-cli { };

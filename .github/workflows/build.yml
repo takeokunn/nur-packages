@@ -64,6 +64,12 @@ jobs:
           cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build aitools
         run: nix build .#aitools --no-link --print-out-paths
+      # The prebuilt binary carries its program in a section that autoPatchelf and strip could damage;
+      # running it is the only check that the payload survived the fixup phase.
+      - name: Check gbrain runs
+        run: |
+          out=$(nix build .#gbrain --no-link --print-out-paths)
+          "$out/bin/gbrain" --version
       - name: Build serena
         timeout-minutes: 30
         run: nix build -L .#serena --out-link result-serena
