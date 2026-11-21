@@ -14,8 +14,8 @@ python313Packages.buildPythonApplication {
   src = fetchFromGitHub {
     owner = "ast-grep";
     repo = "ast-grep-mcp";
-    rev = "732c339c3812a44e9111e6c3aefec64894acd58f";
-    hash = "sha256-jsKJRr68MsYUy+3siEag+6WAMXHgGug5xkG0Mq3voas=";
+    rev = "51d5a23f025c73c02032a98748dc06942548c5e1";
+    hash = "sha256-1Ajt7VGnYi7S+SteX/65HEOB4SXGGGZbyucGD2+d0AE=";
   };
 
   postPatch = ''
@@ -27,6 +27,9 @@ python313Packages.buildPythonApplication {
     echo '[tool.setuptools]' >> pyproject.toml
     echo 'py-modules = ["main"]' >> pyproject.toml
   '';
+
+  # Upstream pins exact versions with uv; nixpkgs moves them independently.
+  pythonRelaxDeps = true;
 
   build-system = with python313Packages; [ setuptools ];
 
