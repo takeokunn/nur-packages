@@ -32,11 +32,11 @@
         "treefmt-nix": "treefmt-nix_3"
       },
       "locked": {
-        "lastModified": 1795405151,
-        "narHash": "sha256-yLzTWUDsmC3lZf0aLTKvo98p3Wnj+XqUZ5PaqCuZ7s4=",
+        "lastModified": 1795412235,
+        "narHash": "sha256-dMbRpnvhXaPpfOtFDn+GvroL1JS3Hw93QAIQ9TxPzw0=",
         "owner": "nerima-lisp",
         "repo": "aitools",
-        "rev": "c662370f19fda2882dd9e896669619599b10530b",
+        "rev": "ac2c0e40a103c59485b1dfca312c5b0fd5ea186e",
         "type": "github"
       },
       "original": {
@@ -326,16 +326,16 @@
     "cl-org-kit": {
       "flake": false,
       "locked": {
-        "lastModified": 1795360804,
-        "narHash": "sha256-FQiRxnIhPdTjxYt12hk/2DiZd6nlqv+90VSzIjKy4FQ=",
+        "lastModified": 1795403894,
+        "narHash": "sha256-z+bDrtaGWa03Lx42b4Cj7kt9ZrKjhs9Gtp9T4IiKbt4=",
         "owner": "nerima-lisp",
         "repo": "cl-org-kit",
-        "rev": "bad76420930ef95904e0619e3a835f3213290e16",
+        "rev": "6767bf31b8a28cffc4ab3a172212f2ea89d67055",
         "type": "github"
       },
       "original": {
         "owner": "nerima-lisp",
-        "ref": "v0.3.3",
+        "ref": "v0.3.4",
         "repo": "cl-org-kit",
         "type": "github"
       }
@@ -524,11 +524,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1795403596,
-        "narHash": "sha256-jTTKbeM7P1Ou0S1J2VJ0qnkPgm8zG/odfYsNsGEApdw=",
+        "lastModified": 1795412021,
+        "narHash": "sha256-5eLzFSfLcOuaGFpD8vZClvfUuXwPlX0ih0bkLCMyrQo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c40f3fa4eb374e1d5ee89ffe8a72ba531397d257",
+        "rev": "3b96a90c8502ac922e7d834627a737342891f8a1",
         "type": "github"
       },
       "original": {
