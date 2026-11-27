@@ -7,16 +7,16 @@
 
 let
   # scripts/update-packages.sh moves this to the release the upstream `stable` tag points at.
-  version = "0.60.772.0";
+  version = "0.60.778.0";
 
   sources = {
     "aarch64-darwin" = {
       url = "https://github.com/garrytan/gbrain/releases/download/v${version}/gbrain-darwin-arm64";
-      hash = "sha256-GBCnCZ3/2/jj/Jv4zEfC8AwLgKLGpougm1EhVNNDffc=";
+      hash = "sha256-iK8q5mg92m7CSq1gjln1DEL4RK9GDGnqF7Y02rNmvAs=";
     };
     "x86_64-linux" = {
       url = "https://github.com/garrytan/gbrain/releases/download/v${version}/gbrain-linux-x64";
-      hash = "sha256-GYobtozFxJFpbtPGCu8NU/s/LmWcKHz32Osql/UK+IQ=";
+      hash = "sha256-tPhT70902pDuEoWOoI4lEsaitQZLI4NfgpeWZ8X+e7s=";
     };
   };
 
